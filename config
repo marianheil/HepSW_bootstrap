@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+## general setup
+export HEPSW_HOME=/mt/hepsw/el7/x86_64
+export WORKING_DIR=/scratch/${USER}
+mkdir -p ${WORKING_DIR}
+export BASE_DIR=${PWD}
+export NUM_CORES=$(nproc --ignore=2 --all)
+
+## FastJet
+export HEPSW_FASTJET_VERSION=3.3.2
