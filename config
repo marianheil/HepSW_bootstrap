@@ -20,3 +20,6 @@ export HEPSW_LHAPDF_PDF_SOURCE=http://www.hepforge.org/archive/lhapdf/pdfsets/6.
 
 ## root
 export HEPSW_ROOT_VERSION=6.16.00
+
+## HepMC2
+export HEPSW_HEPMC2_VERSION=2.06.09
