@@ -3,10 +3,10 @@
 source ../config
 
 ## package specific variables
-name=CLHEP
+name=${HEPSW_CLHEP_NAME}
 package_name=clhep-${HEPSW_CLHEP_VERSION}
 
-InstallDir=${HEPSW_HOME}/${name}-${HEPSW_CLHEP_VERSION}
+InstallDir=${HEPSW_CLHEP_DIR}
 
 ## download
 cd ${WORKING_DIR}

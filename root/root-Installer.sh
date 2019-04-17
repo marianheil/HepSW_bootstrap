@@ -3,10 +3,10 @@
 source ../config
 
 ## package specific variables
-name=root
+name=${HEPSW_ROOT_NAME}
 package_name=${name}-${HEPSW_ROOT_VERSION}
 
-InstallDir=${HEPSW_HOME}/${name}-${HEPSW_ROOT_VERSION}
+InstallDir=${HEPSW_ROOT_DIR}
 
 ## download
 cd ${WORKING_DIR}

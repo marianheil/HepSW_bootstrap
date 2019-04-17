@@ -3,10 +3,10 @@
 source ../config
 
 ## package specific variables
-name=HepMC2
+name=${HEPSW_HEPMC2_NAME}
 package_name=hepmc${HEPSW_HEPMC2_VERSION}
 
-InstallDir=${HEPSW_HOME}/${name}-${HEPSW_HEPMC2_VERSION}
+InstallDir=${HEPSW_HEPMC2_DIR}
 
 ## download
 cd ${WORKING_DIR}

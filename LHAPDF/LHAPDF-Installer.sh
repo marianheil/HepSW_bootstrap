@@ -3,10 +3,10 @@
 source ../config
 
 ## package specific variables
-name=LHAPDF
+name=${HEPSW_LHAPDF_NAME}
 package_name=${name}-${HEPSW_LHAPDF_VERSION}
 
-InstallDir=${HEPSW_HOME}/${name}-${HEPSW_LHAPDF_VERSION}
+InstallDir=${HEPSW_LHAPDF_DIR}
 
 ## download
 cd ${WORKING_DIR}

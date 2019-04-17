@@ -3,11 +3,11 @@
 source ../config
 
 ## package specific variables
-name=HepMC3
+name=${HEPSW_HEPMC3_NAME}
 package_name=${name}-${HEPSW_HEPMC3_VERSION}
 # package_name=hepmc${HEPSW_HEPMC3_VERSION} # old style < 3.1
 
-InstallDir=${HEPSW_HOME}/${name}-${HEPSW_HEPMC3_VERSION}
+InstallDir=${HEPSW_HEPMC3_DIR}
 
 ## download
 cd ${WORKING_DIR}

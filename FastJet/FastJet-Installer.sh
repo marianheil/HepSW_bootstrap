@@ -3,10 +3,10 @@
 source ../config
 
 ## package specific variables
-name=FastJet
+name=${HEPSW_FASTJET_NAME}
 package_name=fastjet-${HEPSW_FASTJET_VERSION}
 
-InstallDir=${HEPSW_HOME}/${name}-${HEPSW_FASTJET_VERSION}
+InstallDir=${HEPSW_FASTJET_DIR}
 
 ## download
 cd ${WORKING_DIR}

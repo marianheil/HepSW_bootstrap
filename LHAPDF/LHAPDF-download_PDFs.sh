@@ -3,9 +3,7 @@
 source ../config
 
 ## package specific variables
-name=LHAPDF
-
-InstallDir=${HEPSW_HOME}/${name}-${HEPSW_LHAPDF_VERSION}
+InstallDir=${HEPSW_LHAPDF_DIR}
 
 ## download all PDF sets
 all_pdfs=($(${InstallDir}/bin/lhapdf ls))
