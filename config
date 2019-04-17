@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
 
 ## general setup
-export HEPSW_HOME=/mt/hepsw/el7/x86_64
-export WORKING_DIR=/scratch/${USER}
-mkdir -p ${WORKING_DIR}
-export BASE_DIR=${PWD}
-export NUM_CORES=$(nproc --ignore=2 --all)
+export HEPSW_HOME=/mt/hepsw/el7/x86_64 # install destination
+export WORKING_DIR=/scratch/${USER} # temporary working directory
+export BASE_DIR=${PWD} # current directory saved for later use
+export NUM_CORES=$(nproc --ignore=2 --all) # number of available CPUs
 
-## FastJet
-export HEPSW_FASTJET_VERSION=3.3.2
+mkdir -p ${WORKING_DIR}
 
 ## CLHEP
 export HEPSW_CLHEP_VERSION=2.4.1.0
 
+## FastJet
+export HEPSW_FASTJET_VERSION=3.3.2
+
 ## LHAPDF
 export HEPSW_LHAPDF_VERSION=6.2.1
+
+## root
+export HEPSW_ROOT_VERSION=6.16.00
