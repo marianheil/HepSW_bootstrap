@@ -16,6 +16,7 @@ export HEPSW_FASTJET_VERSION=3.3.2
 
 ## LHAPDF
 export HEPSW_LHAPDF_VERSION=6.2.1
+export HEPSW_LHAPDF_PDF_SOURCE=http://www.hepforge.org/archive/lhapdf/pdfsets/6.2
 
 ## root
 export HEPSW_ROOT_VERSION=6.16.00
