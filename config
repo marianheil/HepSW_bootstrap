@@ -9,3 +9,6 @@ export NUM_CORES=$(nproc --ignore=2 --all)
 
 ## FastJet
 export HEPSW_FASTJET_VERSION=3.3.2
+
+## CLHEP
+export HEPSW_CLHEP_VERSION=2.4.1.0
