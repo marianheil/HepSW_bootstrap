@@ -19,4 +19,4 @@ do
   echo "Installing" ${process}
   ./openloops libinstall ${process} || exit 1
 done
-# rm -r process_src/* process_obj/* || exit 2
+rm -r process_src/* process_obj/* || exit 2
