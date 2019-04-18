@@ -50,7 +50,13 @@ export HEPSW_ROOT_NAME=root
 export HEPSW_ROOT_DIR=${HEPSW_HOME}/${HEPSW_ROOT_NAME}-${HEPSW_ROOT_VERSION}
 
 ## rivet
-# depends on HepMC2 & FastJet
+# depends on FastJet & HepMC2
 export HEPSW_RIVET_VERSION=2.7.0
 export HEPSW_RIVET_NAME=rivet
 export HEPSW_RIVET_DIR=${HEPSW_HOME}/${HEPSW_RIVET_NAME}-${HEPSW_RIVET_VERSION}
+
+## Sherpa
+# depends on FastJet, HepMC2, LHAPDF, OpenLoops, root & rivet
+export HEPSW_SHERPA_VERSION=2.2.6
+export HEPSW_SHERPA_NAME=Sherpa
+export HEPSW_SHERPA_DIR=${HEPSW_HOME}/${HEPSW_SHERPA_NAME}-${HEPSW_SHERPA_VERSION}
