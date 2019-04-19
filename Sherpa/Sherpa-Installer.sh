@@ -18,8 +18,8 @@ cd ${package_name}
 autoreconf -i
 ./configure --prefix ${InstallDir} --enable-fastjet=${HEPSW_FASTJET_DIR} \
   --enable-hepmc2=${HEPSW_HEPMC2_DIR} --enable-lhapdf=${HEPSW_LHAPDF_DIR} \
-  --enable-openloops=${HEPSW_QCDLOOP_DIR} --enable-root=${HEPSW_ROOT_DIR} \
-  --enable-rivet=${HEPSW_RIVET_DIR} \
+  --enable-openloops=${HEPSW_OPENLOOPS_DIR} --enable-root=${HEPSW_ROOT_DIR} \
+  --enable-rivet=${HEPSW_RIVET_DIR} --enable-gzip \
   CXXFLAGS="-std=c++11" --enable-mpi --enable-ufo || exit 2
 make -j${NUM_CORES} || exit 2
 make check || exit 3
