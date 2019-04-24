@@ -8,6 +8,11 @@ export NUM_CORES=$(nproc --ignore=2 --all) # number of available CPUs
 
 mkdir -p ${WORKING_DIR}
 
+## boost
+export HEPSW_BOOST_VERSION=1.70.0
+export HEPSW_BOOST_NAME=boost
+export HEPSW_BOOST_DIR=${HEPSW_HOME}/${HEPSW_BOOST_NAME}-${HEPSW_BOOST_VERSION}
+
 ## CLHEP
 export HEPSW_CLHEP_VERSION=2.4.1.0
 export HEPSW_CLHEP_NAME=CLHEP
