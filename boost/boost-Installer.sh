@@ -16,7 +16,7 @@ wget -O- \
   tar zx || exit 1
 cd ${package_name}
 ./bootstrap.sh --prefix=${InstallDir} --with-python=$(which python) \
-  --with-libraries=iostreams,python || exit 2
+  --with-libraries=all || exit 2
 
 ## install
 ./b2 -j${NUM_CORES} install --layout=tagged || exit 3
