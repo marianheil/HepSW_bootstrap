@@ -11,7 +11,7 @@ Each program has its own installation script named
 `ProgramName/ProgramName-Installer.sh`. Pleas always run the script in their
 respective folders. For example to install FastJet run:
 
-```
+```sh
 cd FastJet
 ./FastJet-Installer.sh
 ```
@@ -32,7 +32,7 @@ general definitions, like `HEPSW_HOME` being the base directory on the `hepsw`
 (i.e. `/mt/hepsw/el7/x86_64`), the `config` also defines all parameters for all
 programs. Each program requires at least three parameters:
 
-```
+```sh
 HEPSW_PROGRAM_VERSION # version, should be updated when newer versions available
 HEPSW_PROGRAM_NAME    # name
 HEPSW_PROGRAM_DIR     # install directory, set to ${HEPSW_HOME}/NAME-VERSION by default
