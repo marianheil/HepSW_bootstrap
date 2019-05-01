@@ -66,6 +66,7 @@ cd build
 cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} -DBOOST_ROOT=${HEPSW_BOOST_DIR} \
   -DHepMC_ROOT_DIR=${HEPSW_HEPMC2_DIR} .. || exit 2
 make -j${NUM_CORES} || exit 2
+make test || exit 3
 make install || exit 3
 
 ## environment
@@ -82,9 +83,10 @@ cd ${WORKING_DIR}/${package_name}/FixedOrderGen
 mkdir build
 cd build
 cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} -DBOOST_ROOT=${HEPSW_BOOST_DIR} \
-  .. || exit 2
-make -j${NUM_CORES} || exit 2
-make install || exit 3
+  .. || exit 4
+make -j${NUM_CORES} || exit 5
+make test || exit 6
+make install || exit 6
 
 ## Cleanup
 cd ${BASE_DIR}
