@@ -66,7 +66,7 @@ export HEPSW_RIVET_NAME=rivet
 export HEPSW_RIVET_DIR=${HEPSW_HOME}/${HEPSW_RIVET_NAME}-${HEPSW_RIVET_VERSION}
 
 ## HEJ
-# depends on boost, CLHEP, FastJet, HepMC2, LHAPDF, QCDloop & rivet
+# depends on boost, CLHEP, FastJet, HepMC2, LHAPDF, QCDloop, yaml & rivet
 export HEPSW_HEJ_VERSION=2.0.4
 export HEPSW_HEJ_NAME=HEJ
 export HEPSW_HEJ_DIR=${HEPSW_HOME}/${HEPSW_HEJ_NAME}-${HEPSW_HEJ_VERSION}
