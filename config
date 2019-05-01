@@ -6,6 +6,11 @@ export WORKING_DIR=/scratch/${USER} # temporary working directory
 export BASE_DIR=${PWD} # current directory saved for later use
 export NUM_CORES=$(nproc --ignore=2 --all) # number of available CPUs
 
+## README
+mkdir -p ${HEPSW_HOME}
+cp ../UserInfo/README.txt ${HEPSW_HOME}/README.txt
+sed  -i -e "s HEPSW_HOME ${HEPSW_HOME} g" ${HEPSW_HOME}/README.txt
+
 mkdir -p ${WORKING_DIR}
 
 ## boost
