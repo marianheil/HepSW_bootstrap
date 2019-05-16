@@ -56,4 +56,4 @@ sed -i -e "s TEMPLATE_PREFIX ${InstallDir} g" ${InstallDir}/${name}env.sh
 sed -i -e "s/TEMPLATE/${name}/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.PATH/export PATH/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.*//g" ${InstallDir}/${name}env.sh
-printf 'export PYTHONPATH='$InstallDir'/lib:$PYTHONPATH\n' >> ${InstallDir}/${name}env.sh
+printf 'export PYTHONPATH='$InstallDir'/lib:${PYTHONPATH}\n' >> ${InstallDir}/${name}env.sh
