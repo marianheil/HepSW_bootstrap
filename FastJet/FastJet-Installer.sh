@@ -15,7 +15,7 @@ wget -O- http://fastjet.fr/repo/${package_name}.tar.gz | \
 cd ${package_name}/
 
 ## install
-./configure --prefix=${InstallDir} --enable-allplugins || exit 2
+./configure --prefix=${InstallDir} --enable-pyext --enable-allplugins || exit 2
 make -j${NUM_CORES} || exit 2
 make check || exit 3
 make install || exit 3
@@ -28,3 +28,4 @@ sed -i -e "s TEMPLATE_PREFIX ${InstallDir} g" ${InstallDir}/${name}env.sh
 sed -i -e "s/TEMPLATE/${name}/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.PATH/export PATH/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.*//g" ${InstallDir}/${name}env.sh
+printf 'export PYTHONPATH='$InstallDir'/lib/python2.7/site-packages:'$InstallDir'/lib64/python2.7/site-packages:${PYTHONPATH}\n' >> ${InstallDir}/${name}env.sh
