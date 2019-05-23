@@ -14,6 +14,16 @@ Some packages are dependent on others, e.g. rivet depends on FastJet & HepMC2.
 The specific dependences are listed in NAME-VERSION/NAMEdependences.sh. Add
 everything listed in there to you ~/.bashrc.
 
+# Missing dependences, e.g. GLIBCXX 3.4.20
+
+A common problem in using these packages are missing system dependences, mostly
+GLIBCXX. They are in /usr/local/lib64 and /usr/lib64. Please source them as
+well, i.e. by adding
+
+  export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib64:/usr/lib64
+
+to your .bashrc.
+
 # Adding new or updating packages
 
 To add new packages or update old once please create an "Issue" or "Merge
