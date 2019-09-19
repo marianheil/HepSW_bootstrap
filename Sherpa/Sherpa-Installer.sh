@@ -21,6 +21,11 @@ printf "## ${HEPSW_HEPMC2_NAME} ${HEPSW_HEPMC2_VERSION}\n" \
   >> ${InstallDir}/${name}dependences.sh
 printf "source ${HEPSW_HEPMC2_DIR}/${HEPSW_HEPMC2_NAME}env.sh\n" \
   >> ${InstallDir}/${name}dependences.sh
+# HepMC3
+printf "## ${HEPSW_HEPMC3_NAME} ${HEPSW_HEPMC3_VERSION}\n" \
+  >> ${InstallDir}/${name}dependences.sh
+printf "source ${HEPSW_HEPMC3_DIR}/${HEPSW_HEPMC3_NAME}env.sh\n" \
+  >> ${InstallDir}/${name}dependences.sh
 # LHAPDF
 printf "## ${HEPSW_LHAPDF_NAME} ${HEPSW_LHAPDF_VERSION}\n" \
   >> ${InstallDir}/${name}dependences.sh
@@ -30,6 +35,11 @@ printf "source ${HEPSW_LHAPDF_DIR}/${HEPSW_LHAPDF_NAME}env.sh\n" \
 printf "## ${HEPSW_OPENLOOPS_NAME} ${HEPSW_OPENLOOPS_VERSION}\n" \
   >> ${InstallDir}/${name}dependences.sh
 printf "export ${HEPSW_OPENLOOPS_NAME}_ROOT_DIR=${HEPSW_OPENLOOPS_DIR}\n" \
+  >> ${InstallDir}/${name}dependences.sh
+# recola
+printf "## ${HEPSW_RECOLA_NAME} ${HEPSW_RECOLA_VERSION}\n" \
+  >> ${InstallDir}/${name}dependences.sh
+printf "source ${HEPSW_RECOLA_DIR}/${HEPSW_RECOLA_NAME}env.sh\n" \
   >> ${InstallDir}/${name}dependences.sh
 # rivet
 printf "## ${HEPSW_RIVET_NAME} ${HEPSW_RIVET_VERSION}\n" \
@@ -46,7 +56,7 @@ source ${InstallDir}/${name}dependences.sh || exit 1
 
 ## download
 cd ${WORKING_DIR}
-git clone -b ${git_branch} https://gitlab.com/sherpa-team/sherpa.git ${package_name}
+# git clone -b ${git_branch} https://gitlab.com/sherpa-team/sherpa.git ${package_name}
 cd ${package_name}
 
 ## install
@@ -54,8 +64,9 @@ autoreconf -i
 ./configure --prefix ${InstallDir} --enable-fastjet=${HEPSW_FASTJET_DIR} \
   --enable-hepmc2=${HEPSW_HEPMC2_DIR} --enable-lhapdf=${HEPSW_LHAPDF_DIR} \
   --enable-openloops=${HEPSW_OPENLOOPS_DIR} --enable-root=${HEPSW_ROOT_DIR} \
-  --enable-rivet=${HEPSW_RIVET_DIR} --enable-gzip \
-  CXXFLAGS="-std=c++11" --enable-mpi --enable-ufo || exit 2
+  --enable-rivet=${HEPSW_RIVET_DIR} --enable-recola=${HEPSW_RECOLA_DIR} \
+  --enable-hepmc3=${HEPSW_HEPMC3_DIR} --enable-hepmc3root --enable-pythia \
+  --enable-mpi --enable-gzip CXXFLAGS="-std=c++11" --enable-ufo || exit 2
 make -j${NUM_CORES} || exit 2
 make check || exit 3
 make install || exit 3
