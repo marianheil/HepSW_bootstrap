@@ -56,7 +56,7 @@ source ${InstallDir}/${name}dependences.sh || exit 1
 
 ## download
 cd ${WORKING_DIR}
-# git clone -b ${git_branch} https://gitlab.com/sherpa-team/sherpa.git ${package_name}
+git clone -b ${git_branch} https://gitlab.com/sherpa-team/sherpa.git ${package_name}
 cd ${package_name}
 
 ## install
