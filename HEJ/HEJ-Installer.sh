@@ -70,8 +70,7 @@ make test || exit 3
 make install || exit 3
 
 ## environment
-cd ${BASE_DIR}
-cp ../TEMPLATEenv.sh ${InstallDir}/${name}env.sh
+cp ${BASE_DIR}/TEMPLATEenv.sh ${InstallDir}/${name}env.sh
 sed -i -e "s TEMPLATE_PREFIX ${InstallDir} g" ${InstallDir}/${name}env.sh
 sed -i -e "s/TEMPLATE/${name}/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.PATH/export PATH/g" ${InstallDir}/${name}env.sh
@@ -89,5 +88,4 @@ make test || exit 6
 make install || exit 6
 
 ## Cleanup
-cd ${BASE_DIR}
 rm -rf ${WORKING_DIR}/${package_name}

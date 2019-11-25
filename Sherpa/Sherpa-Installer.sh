@@ -71,11 +71,10 @@ make -j${NUM_CORES} || exit 2
 make check || exit 3
 make install || exit 3
 
-cd ${BASE_DIR}
 rm -rf ${WORKING_DIR}/${package_name}
 
 ## environment
-cp ../TEMPLATEenv.sh ${InstallDir}/${name}env.sh
+cp ${BASE_DIR}/TEMPLATEenv.sh ${InstallDir}/${name}env.sh
 sed -i -e "s TEMPLATE_PREFIX ${InstallDir} g" ${InstallDir}/${name}env.sh
 sed -i -e "s/TEMPLATE/${name}/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.PATH/export PATH/g" ${InstallDir}/${name}env.sh

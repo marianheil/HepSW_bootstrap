@@ -22,8 +22,7 @@ make -j${NUM_CORES} install || exit 4
 rm -rf ${WORKING_DIR}/${package_name}
 
 ## environment
-cd ${BASE_DIR}
-cp ../TEMPLATEenv.sh ${InstallDir}/${name}env.sh
+cp ${BASE_DIR}/TEMPLATEenv.sh ${InstallDir}/${name}env.sh
 sed -i -e "s/.*TEMPLATE_LIBRARYDIR=.*//g" ${InstallDir}/${name}env.sh
 sed -i -e "s/.*LD_LIBRARY_PATH.*//g" ${InstallDir}/${name}env.sh
 sed -i -e 's ${TEMPLATE_LIBRARYDIR} ${TEMPLATE_ROOT_DIR}/share g' ${InstallDir}/${name}env.sh

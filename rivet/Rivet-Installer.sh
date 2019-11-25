@@ -35,5 +35,4 @@ INSTALL_FASTJET=0 FASTJETPATH=${HEPSW_FASTJET_DIR} \
   INSTALL_PREFIX=${InstallDir} MAKE="make -j ${NUM_CORES}" \
   ./rivet-bootstrap
 
-cd ${BASE_DIR}
 rm -rf ${WORKING_DIR}/${package_name}

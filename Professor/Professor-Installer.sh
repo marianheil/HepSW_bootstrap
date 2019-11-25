@@ -43,8 +43,7 @@ CXXFLAGS="-I${HEPSW_EIGEN_DIR}/include/${HEPSW_EIGEN_NAME}3 -O3" \
 rm -rf ${WORKING_DIR}/${package_name}
 
 ## environment
-cd ${BASE_DIR}
-cp ../TEMPLATEenv.sh ${InstallDir}/${name}env.sh
+cp ${BASE_DIR}/TEMPLATEenv.sh ${InstallDir}/${name}env.sh
 sed -i -e "s TEMPLATE_PREFIX ${InstallDir} g" ${InstallDir}/${name}env.sh
 sed -i -e "s/TEMPLATE/${name}/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.PATH/export PATH/g" ${InstallDir}/${name}env.sh

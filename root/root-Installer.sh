@@ -23,5 +23,4 @@ make install || exit 3
 rm -rf ${WORKING_DIR}/${package_name}
 
 ## environment
-cd ${BASE_DIR}
 printf "source ${InstallDir}/bin/thisroot.sh\n" > ${InstallDir}/${name}env.sh

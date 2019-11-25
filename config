@@ -3,7 +3,7 @@
 ## general setup
 export HEPSW_HOME=/mt/hepsw/el7/x86_64 # install destination
 export WORKING_DIR=/scratch/${USER} # temporary working directory
-export BASE_DIR=${PWD} # current directory saved for later use
+export BASE_DIR=${BASE_DIR:=$(dirname "$PWD/${BASH_SOURCE[0]}")} # directory of the config file
 export NUM_CORES=$(nproc --ignore=2 --all) # number of available CPUs
 
 ## README

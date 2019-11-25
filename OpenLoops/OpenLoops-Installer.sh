@@ -17,4 +17,3 @@ git clone https://gitlab.com/openloops/OpenLoops.git . || exit 1
 ./scons
 
 ## no environment needed
-cd ${BASE_DIR}
