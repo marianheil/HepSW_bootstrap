@@ -1,4 +1,4 @@
-This folder contains typical HEP programs and their dependences.
+This folder contains typical HEP programs and their dependencies.
 For further information see https://gitlab.dur.scotgrid.ac.uk/hepsw/install
 
 # Using a package
@@ -11,12 +11,12 @@ where NAME and VERSION should be replaces by the respective package name and
 version.
 
 Some packages are dependent on others, e.g. rivet depends on FastJet & HepMC2.
-The specific dependences are listed in NAME-VERSION/NAMEdependences.sh. Add
+The specific dependencies are listed in NAME-VERSION/NAMEdependencies.sh. Add
 everything listed in there to you ~/.bashrc.
 
-# Missing dependences, e.g. GLIBCXX 3.4.20
+# Missing dependencies, e.g. GLIBCXX 3.4.20
 
-A common problem in using these packages are missing system dependences, mostly
+A common problem in using these packages are missing system dependencies, mostly
 GLIBCXX. They are in /usr/local/lib64 and /usr/lib64. Please source them as
 well, i.e. by adding
 

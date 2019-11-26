@@ -8,29 +8,29 @@ package_name=pythia$(echo ${HEPSW_PYTHIA_VERSION} | sed -e "s/\.//g")
 
 InstallDir=${HEPSW_PYTHIA_DIR}
 
-## save dependences
+## save dependencies
 # FastJet
 printf "## ${HEPSW_FASTJET_NAME} ${HEPSW_FASTJET_VERSION}\n" \
-  > ${InstallDir}/${name}dependences.sh
+  > ${InstallDir}/${name}dependencies.sh
 printf "source ${HEPSW_FASTJET_DIR}/${HEPSW_FASTJET_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 # HepMC2
 printf "## ${HEPSW_HEPMC2_NAME} ${HEPSW_HEPMC2_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 printf "source ${HEPSW_HEPMC2_DIR}/${HEPSW_HEPMC2_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 # LHAPDF
 printf "## ${HEPSW_LHAPDF_NAME} ${HEPSW_LHAPDF_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 printf "source ${HEPSW_LHAPDF_DIR}/${HEPSW_LHAPDF_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 # root
 printf "## ${HEPSW_ROOT_NAME} ${HEPSW_ROOT_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 printf "source ${HEPSW_ROOT_DIR}/${HEPSW_ROOT_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 
-source ${InstallDir}/${name}dependences.sh || exit 1
+source ${InstallDir}/${name}dependencies.sh || exit 1
 
 ## download
 cd ${WORKING_DIR}

@@ -8,18 +8,18 @@ package_name=${HEPSW_RIVET_VERSION}
 
 InstallDir=${HEPSW_RIVET_DIR}
 
-## dependences
+## dependencies
 mkdir -p ${InstallDir}
 # FastJet
 printf "## ${HEPSW_FASTJET_NAME} ${HEPSW_FASTJET_VERSION}\n" \
-  > ${InstallDir}/${name}dependences.sh
+  > ${InstallDir}/${name}dependencies.sh
 printf "source ${HEPSW_FASTJET_DIR}/${HEPSW_FASTJET_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 # HepMC2
 printf "## ${HEPSW_HEPMC2_NAME} ${HEPSW_HEPMC2_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 printf "source ${HEPSW_HEPMC2_DIR}/${HEPSW_HEPMC2_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 
 ## download
 cd ${WORKING_DIR}

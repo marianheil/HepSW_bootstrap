@@ -8,21 +8,21 @@ package_name=${name}-${HEPSW_PROFESSOR_VERSION}
 
 InstallDir=${HEPSW_PROFESSOR_DIR}
 
-## dependences
+## dependencies
 mkdir -p ${InstallDir}
 # eigen
 printf "## ${HEPSW_EIGEN_NAME} ${HEPSW_EIGEN_VERSION}\n" \
-  > ${InstallDir}/${name}dependences.sh
+  > ${InstallDir}/${name}dependencies.sh
 printf "source ${HEPSW_EIGEN_DIR}/${HEPSW_EIGEN_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 # root
 printf "## ${HEPSW_ROOT_NAME} ${HEPSW_ROOT_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 printf "source ${HEPSW_ROOT_DIR}/${HEPSW_ROOT_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 
 
-source ${InstallDir}/${name}dependences.sh || exit 1
+source ${InstallDir}/${name}dependencies.sh || exit 1
 
 ## download
 cd ${WORKING_DIR}

@@ -1,7 +1,7 @@
 # hepsw install scripts
 
 This directory includes scripts to install various HEP programs & their
-dependences. This is intended to setup `/mt/hepsw` on the IPPP Durham batch
+dependencies. This is intended to setup `/mt/hepsw` on the IPPP Durham batch
 system. However the script should also work for different systems, but this
 might require slight modification on the `config` file.
 
@@ -18,7 +18,7 @@ cd FastJet
 
 Please make sure that your system environment (i.e. `~/.bashrc`) is as clean as
 possible before installations. Otherwise some install scripts could pick up
-wrong (locally) installed dependences, which wouldn't work for other users.
+wrong (locally) installed dependencies, which wouldn't work for other users.
 
 To also download optional features, like PDF sets for LHAPDF or progress
 libraries for OpenLoops, execute the additional scripts in the corresponding
@@ -44,11 +44,11 @@ installation for dependent packages.
 ## Output
 
 Each program is installed into `HEPSW_PROGRAM_DIR`. Additionally an environment
-(`NAMEenv.sh`) and (potentially) a dependences (`NAMEdependences.sh`) file are
+(`NAMEenv.sh`) and (potentially) a dependencies (`NAMEdependencies.sh`) file are
 created. Sourcing the environment file sets all program specific system
 environment variables for that package. To also set the variables from program
-dependences you can either source `NAMEdependences.sh` directly or source each
-package specified in in `NAMEdependences.sh` manually. The latter is preferred
+dependencies you can either source `NAMEdependencies.sh` directly or source each
+package specified in in `NAMEdependencies.sh` manually. The latter is preferred
 to keep your environment clean and to ensure that you are only using one version
 of the same package.
 

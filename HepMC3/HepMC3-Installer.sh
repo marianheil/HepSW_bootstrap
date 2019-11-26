@@ -9,15 +9,15 @@ package_name=${name}-${HEPSW_HEPMC3_VERSION}
 
 InstallDir=${HEPSW_HEPMC3_DIR}
 
-## dependences
+## dependencies
 mkdir -p ${InstallDir}
 # root
 printf "## ${HEPSW_ROOT_NAME} ${HEPSW_ROOT_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 printf "source ${HEPSW_ROOT_DIR}/${HEPSW_ROOT_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 
-source ${InstallDir}/${name}dependences.sh || exit 1
+source ${InstallDir}/${name}dependencies.sh || exit 1
 
 ## download
 cd ${WORKING_DIR}

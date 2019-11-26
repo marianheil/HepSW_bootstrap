@@ -13,16 +13,16 @@ unpacked_dir=${name}/R$(echo ${HEPSW_EVTGEN_VERSION} | sed -e "s/\./-/g")
 mkdir -p ${InstallDir}
 # HepMC2
 printf "## ${HEPSW_HEPMC2_NAME} ${HEPSW_HEPMC2_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 printf "source ${HEPSW_HEPMC2_DIR}/${HEPSW_HEPMC2_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 # pythia
 printf "## ${HEPSW_PYTHIA_NAME} ${HEPSW_PYTHIA_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 printf "source ${HEPSW_PYTHIA_DIR}/${HEPSW_PYTHIA_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
+  >> ${InstallDir}/${name}dependencies.sh
 
-source ${InstallDir}/${name}dependences.sh || exit 1
+source ${InstallDir}/${name}dependencies.sh || exit 1
 
 ## download
 cd ${WORKING_DIR}
