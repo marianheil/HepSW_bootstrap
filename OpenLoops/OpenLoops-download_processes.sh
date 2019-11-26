@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 source ../config
+../init.sh
 
 ## package specific variables
 InstallDir=${HEPSW_OPENLOOPS_DIR}

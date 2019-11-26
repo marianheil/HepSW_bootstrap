@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 source ../config
+../init.sh
 
 ## package specific variables
 name=${HEPSW_EVTGEN_NAME}

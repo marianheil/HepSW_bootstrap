@@ -6,13 +6,6 @@ export WORKING_DIR=${WORKING_DIR:=/scratch/${USER}} #temporary working directory
 export BASE_DIR=${BASE_DIR:=$(dirname "$PWD/${BASH_SOURCE[0]}")} # directory of the config file
 export NUM_CORES=${NUM_CORES:=$(nproc --ignore=2 --all)} # number of available CPUs
 
-## README
-mkdir -p ${HEPSW_HOME}
-cp ../UserInfo/README.txt ${HEPSW_HOME}/README.txt
-sed  -i -e "s HEPSW_HOME ${HEPSW_HOME} g" ${HEPSW_HOME}/README.txt
-
-mkdir -p ${WORKING_DIR}
-
 ## boost
 export HEPSW_BOOST_DEPENDENCIES=()
 export HEPSW_BOOST_VERSION=1.70.0
