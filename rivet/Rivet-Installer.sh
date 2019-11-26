@@ -10,6 +10,15 @@ dependencies=${HEPSW_RIVET_DEPENDENCIES[@]}
 
 InstallDir=${HEPSW_RIVET_DIR}
 
+if [[ " ${dependencies[@]} " =~ " HEPMC2 " ]]; then
+  echo "Using HepMC2"
+  InstallDir=${InstallDir}_${HEPSW_HEPMC2_NAME}
+  hepmc_flag="--with-hepmc=${HEPSW_HEPMC2_DIR}"
+else
+  echo "Using HepMC3"
+  hepmc_flag="--with-hepmc3=${HEPSW_HEPMC3_DIR}"
+fi
+
 ## dependencies
 mkdir -p ${InstallDir}
 printf "" > ${InstallDir}/${name}dependencies.sh
@@ -33,7 +42,7 @@ cd ${package_name}
 ./configure --prefix=${InstallDir} \
   --with-yoda=${HEPSW_YODA_DIR} \
   --with-fastjet=${HEPSW_FASTJET_DIR} \
-  --with-hepmc3=${HEPSW_HEPMC3_DIR} || exit 2
+  ${hepmc_flag} || exit 2
 
 ## install
 make -j${NUM_CORES} || exit 3
