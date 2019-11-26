@@ -52,8 +52,8 @@ cd ${WORKING_DIR}
 wget -O- http://fastjet.hepforge.org/contrib/downloads/fjcontrib-${HEPSW_FASTJET_CONTRIB_VERSION}.tar.gz \
   | tar zx || exit 4
 cd fjcontrib-${HEPSW_FASTJET_CONTRIB_VERSION}
-./configure || exit 5
-make -j${NUM_CORES} || exit 5
+./configure CXXFLAGS="-fPIC -std=c++11" || exit 5
+make -j${NUM_CORES} fragile-shared-install || exit 5
 make check || exit 5
 make install || exit 5
 rm -rf ${WORKING_DIR}/fjcontrib
