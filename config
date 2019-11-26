@@ -81,7 +81,7 @@ export HEPSW_YODA_NAME=YODA
 export HEPSW_YODA_DIR=${HEPSW_HOME}/${HEPSW_YODA_NAME}-${HEPSW_YODA_VERSION}
 
 ## HepMC3
-# depends on root
+# depends on root (optional)
 export HEPSW_HEPMC3_DEPENDENCIES=("ROOT")
 export HEPSW_HEPMC3_VERSION=3.1.2
 export HEPSW_HEPMC3_NAME=HepMC3

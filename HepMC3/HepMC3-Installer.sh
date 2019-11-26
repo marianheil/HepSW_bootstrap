@@ -36,7 +36,13 @@ mkdir build
 cd build
 
 ## install
-cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} .. || exit 3
+include_root="OFF"
+if [[ " ${dependencies[@]} " =~ " ROOT " ]]; then
+  echo "Including Root I/O"
+  include_root="ON"
+fi
+cmake3 .. -DCMAKE_INSTALL_PREFIX=${InstallDir} \
+  -DHEPMC3_ENABLE_ROOTIO=${include_root} || exit 3
 make -j${NUM_CORES} || exit 3
 make install || exit 4
 rm -rf ${WORKING_DIR}/${package_name}
