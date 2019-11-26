@@ -5,22 +5,22 @@ source ../config
 ## package specific variables
 name=${HEPSW_PROFESSOR_NAME}
 package_name=${name}-${HEPSW_PROFESSOR_VERSION}
+dependencies=${HEPSW_PROFESSOR_DEPENDENCIES[@]}
 
 InstallDir=${HEPSW_PROFESSOR_DIR}
 
 ## dependencies
 mkdir -p ${InstallDir}
-# eigen
-printf "## ${HEPSW_EIGEN_NAME} ${HEPSW_EIGEN_VERSION}\n" \
-  > ${InstallDir}/${name}dependencies.sh
-printf "source ${HEPSW_EIGEN_DIR}/${HEPSW_EIGEN_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependencies.sh
-# root
-printf "## ${HEPSW_ROOT_NAME} ${HEPSW_ROOT_VERSION}\n" \
-  >> ${InstallDir}/${name}dependencies.sh
-printf "source ${HEPSW_ROOT_DIR}/${HEPSW_ROOT_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependencies.sh
-
+printf "" > ${InstallDir}/${name}dependencies.sh
+for dep in ${dependencies[@]}; do
+  dep_name="HEPSW_${dep}_NAME"
+  dep_version="HEPSW_${dep}_VERSION"
+  dep_dir="HEPSW_${dep}_DIR"
+  printf "## ${!dep_name} ${!dep_version}\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+  printf "source ${!dep_dir}/${!dep_name}env.sh\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+done
 
 source ${InstallDir}/${name}dependencies.sh || exit 1
 

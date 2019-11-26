@@ -5,22 +5,23 @@ source ../config
 ## package specific variables
 name=${HEPSW_EVTGEN_NAME}
 package_name=${name}-${HEPSW_EVTGEN_VERSION}
+dependencies=${HEPSW_EVTGEN_DEPENDENCIES[@]}
 
 InstallDir=${HEPSW_EVTGEN_DIR}
 unpacked_dir=${name}/R$(echo ${HEPSW_EVTGEN_VERSION} | sed -e "s/\./-/g")
 
 ## dependencies
 mkdir -p ${InstallDir}
-# HepMC2
-printf "## ${HEPSW_HEPMC2_NAME} ${HEPSW_HEPMC2_VERSION}\n" \
-  >> ${InstallDir}/${name}dependencies.sh
-printf "source ${HEPSW_HEPMC2_DIR}/${HEPSW_HEPMC2_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependencies.sh
-# pythia
-printf "## ${HEPSW_PYTHIA_NAME} ${HEPSW_PYTHIA_VERSION}\n" \
-  >> ${InstallDir}/${name}dependencies.sh
-printf "source ${HEPSW_PYTHIA_DIR}/${HEPSW_PYTHIA_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependencies.sh
+printf "" > ${InstallDir}/${name}dependencies.sh
+for dep in ${dependencies[@]}; do
+  dep_name="HEPSW_${dep}_NAME"
+  dep_version="HEPSW_${dep}_VERSION"
+  dep_dir="HEPSW_${dep}_DIR"
+  printf "## ${!dep_name} ${!dep_version}\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+  printf "source ${!dep_dir}/${!dep_name}env.sh\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+done
 
 source ${InstallDir}/${name}dependencies.sh || exit 1
 

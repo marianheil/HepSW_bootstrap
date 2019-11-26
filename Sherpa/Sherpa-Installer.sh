@@ -5,54 +5,25 @@ source ../config
 ## package specific variables
 name=${HEPSW_SHERPA_NAME}
 package_name=${name}-${HEPSW_SHERPA_VERSION}
+dependencies=${HEPSW_SHERPA_DEPENDENCIES[@]}
 
 InstallDir=${HEPSW_SHERPA_DIR}
 git_branch=rel-$(echo ${HEPSW_SHERPA_VERSION} | sed -e "s/\./-/g")
 
-## dependences
+## dependencies
 mkdir -p ${InstallDir}
-# FastJet
-printf "## ${HEPSW_FASTJET_NAME} ${HEPSW_FASTJET_VERSION}\n" \
-  > ${InstallDir}/${name}dependences.sh
-printf "source ${HEPSW_FASTJET_DIR}/${HEPSW_FASTJET_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
-# HepMC2
-printf "## ${HEPSW_HEPMC2_NAME} ${HEPSW_HEPMC2_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
-printf "source ${HEPSW_HEPMC2_DIR}/${HEPSW_HEPMC2_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
-# HepMC3
-printf "## ${HEPSW_HEPMC3_NAME} ${HEPSW_HEPMC3_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
-printf "source ${HEPSW_HEPMC3_DIR}/${HEPSW_HEPMC3_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
-# LHAPDF
-printf "## ${HEPSW_LHAPDF_NAME} ${HEPSW_LHAPDF_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
-printf "source ${HEPSW_LHAPDF_DIR}/${HEPSW_LHAPDF_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
-# OpenLoops
-printf "## ${HEPSW_OPENLOOPS_NAME} ${HEPSW_OPENLOOPS_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
-printf "export ${HEPSW_OPENLOOPS_NAME}_ROOT_DIR=${HEPSW_OPENLOOPS_DIR}\n" \
-  >> ${InstallDir}/${name}dependences.sh
-# recola
-printf "## ${HEPSW_RECOLA_NAME} ${HEPSW_RECOLA_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
-printf "source ${HEPSW_RECOLA_DIR}/${HEPSW_RECOLA_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
-# rivet
-printf "## ${HEPSW_RIVET_NAME} ${HEPSW_RIVET_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
-printf "source ${HEPSW_RIVET_DIR}/${HEPSW_RIVET_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
-# root
-printf "## ${HEPSW_ROOT_NAME} ${HEPSW_ROOT_VERSION}\n" \
-  >> ${InstallDir}/${name}dependences.sh
-printf "source ${HEPSW_ROOT_DIR}/${HEPSW_ROOT_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependences.sh
+printf "" > ${InstallDir}/${name}dependencies.sh
+for dep in ${dependencies[@]}; do
+  dep_name="HEPSW_${dep}_NAME"
+  dep_version="HEPSW_${dep}_VERSION"
+  dep_dir="HEPSW_${dep}_DIR"
+  printf "## ${!dep_name} ${!dep_version}\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+  printf "source ${!dep_dir}/${!dep_name}env.sh\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+done
 
-source ${InstallDir}/${name}dependences.sh || exit 1
+source ${InstallDir}/${name}dependencies.sh || exit 1
 
 ## download
 cd ${WORKING_DIR}

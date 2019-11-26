@@ -6,16 +6,22 @@ source ../config
 name=${HEPSW_HEPMC3_NAME}
 package_name=${name}-${HEPSW_HEPMC3_VERSION}
 # package_name=hepmc${HEPSW_HEPMC3_VERSION} # old style < 3.1
+dependencies=${HEPSW_HEPMC3_DEPENDENCIES[@]}
 
 InstallDir=${HEPSW_HEPMC3_DIR}
 
 ## dependencies
 mkdir -p ${InstallDir}
-# root
-printf "## ${HEPSW_ROOT_NAME} ${HEPSW_ROOT_VERSION}\n" \
-  >> ${InstallDir}/${name}dependencies.sh
-printf "source ${HEPSW_ROOT_DIR}/${HEPSW_ROOT_NAME}env.sh\n" \
-  >> ${InstallDir}/${name}dependencies.sh
+printf "" > ${InstallDir}/${name}dependencies.sh
+for dep in ${dependencies[@]}; do
+  dep_name="HEPSW_${dep}_NAME"
+  dep_version="HEPSW_${dep}_VERSION"
+  dep_dir="HEPSW_${dep}_DIR"
+  printf "## ${!dep_name} ${!dep_version}\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+  printf "source ${!dep_dir}/${!dep_name}env.sh\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+done
 
 source ${InstallDir}/${name}dependencies.sh || exit 1
 

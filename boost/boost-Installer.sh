@@ -5,8 +5,24 @@ source ../config
 ## package specific variables
 name=${HEPSW_BOOST_NAME}
 package_name=${name}_$(echo ${HEPSW_BOOST_VERSION} | sed -e "s/\./_/g")
+dependencies=${HEPSW_BOOST_DEPENDENCIES[@]}
 
 InstallDir=${HEPSW_BOOST_DIR}
+
+## dependencies
+mkdir -p ${InstallDir}
+printf "" > ${InstallDir}/${name}dependencies.sh
+for dep in ${dependencies[@]}; do
+  dep_name="HEPSW_${dep}_NAME"
+  dep_version="HEPSW_${dep}_VERSION"
+  dep_dir="HEPSW_${dep}_DIR"
+  printf "## ${!dep_name} ${!dep_version}\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+  printf "source ${!dep_dir}/${!dep_name}env.sh\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+done
+
+source ${InstallDir}/${name}dependencies.sh || exit 1
 
 ## download
 cd ${WORKING_DIR}

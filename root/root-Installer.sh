@@ -5,8 +5,24 @@ source ../config
 ## package specific variables
 name=${HEPSW_ROOT_NAME}
 package_name=${name}-${HEPSW_ROOT_VERSION}
+dependencies=${HEPSW_ROOT_DEPENDENCIES[@]}
 
 InstallDir=${HEPSW_ROOT_DIR}
+
+## dependencies
+mkdir -p ${InstallDir}
+printf "" > ${InstallDir}/${name}dependencies.sh
+for dep in ${dependencies[@]}; do
+  dep_name="HEPSW_${dep}_NAME"
+  dep_version="HEPSW_${dep}_VERSION"
+  dep_dir="HEPSW_${dep}_DIR"
+  printf "## ${!dep_name} ${!dep_version}\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+  printf "source ${!dep_dir}/${!dep_name}env.sh\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+done
+
+source ${InstallDir}/${name}dependencies.sh || exit 1
 
 ## download
 cd ${WORKING_DIR}
