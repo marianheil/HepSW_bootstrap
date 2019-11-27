@@ -47,6 +47,6 @@ cd ${package_name}
 ## install
 make -j${NUM_CORES} || exit 3
 make install || exit 3
-cp rivetenv.sh* ${InstallDir} || exit 4 # not added automaticaly in Rivet 3
+cp rivetenv.sh ${InstallDir} || exit 4 # not added automaticaly in Rivet 3
 
 rm -rf ${WORKING_DIR}/${package_name}
