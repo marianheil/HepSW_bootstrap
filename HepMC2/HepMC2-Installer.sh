@@ -9,6 +9,21 @@ package_name=hepmc${HEPSW_HEPMC2_VERSION}
 
 InstallDir=${HEPSW_HEPMC2_DIR}
 
+## dependencies
+mkdir -p ${InstallDir}
+printf "" > ${InstallDir}/${name}dependencies.sh
+for dep in ${dependencies[@]}; do
+  dep_name="HEPSW_${dep}_NAME"
+  dep_version="HEPSW_${dep}_VERSION"
+  dep_dir="HEPSW_${dep}_DIR"
+  printf "## ${!dep_name} ${!dep_version}\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+  printf "source ${!dep_dir}/${!dep_name}env.sh\n" \
+    >> ${InstallDir}/${name}dependencies.sh
+done
+
+source ${InstallDir}/${name}dependencies.sh || exit 1
+
 ## download
 cd ${WORKING_DIR}
 wget -O- http://hepmc.web.cern.ch/hepmc/releases/${package_name}.tgz | \
