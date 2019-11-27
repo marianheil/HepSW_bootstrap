@@ -12,7 +12,6 @@ InstallDir=${HEPSW_RIVET_DIR}
 
 if [[ " ${dependencies[@]} " =~ " HEPMC2 " ]]; then
   echo "Using HepMC2"
-  InstallDir=${InstallDir}_${HEPSW_HEPMC2_NAME}
   hepmc_flag="--with-hepmc=${HEPSW_HEPMC2_DIR}"
 else
   echo "Using HepMC3"
