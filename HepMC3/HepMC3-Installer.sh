@@ -51,6 +51,8 @@ rm -rf ${WORKING_DIR}/${package_name}
 cp ${BASE_DIR}/TEMPLATEenv.sh ${InstallDir}/${name}env.sh
 sed -i -e "s TEMPLATE_PREFIX ${InstallDir} g" ${InstallDir}/${name}env.sh
 sed -i -e "s/TEMPLATE/${name}/g" ${InstallDir}/${name}env.sh
-sed -i -e "s /lib /lib64 g" ${InstallDir}/${name}env.sh
+if [[ -d ${InstallDir}"/lib64" ]]; then
+  sed -i -e "s /lib /lib64 g" ${InstallDir}/${name}env.sh
+fi
 sed -i -e "s/#.export.PATH/export PATH/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.*//g" ${InstallDir}/${name}env.sh
