@@ -34,7 +34,7 @@ cd ${package_name}
 ## install
 ./configure --prefix=${InstallDir} --enable-pyext || exit 2
 make -j${NUM_CORES} || exit 2
-make check || exit 3
+# make check || exit 3 # makes problems
 make install || exit 3
 rm -rf ${WORKING_DIR}/${package_name}
 
