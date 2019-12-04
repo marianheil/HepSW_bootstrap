@@ -5,6 +5,7 @@ export HEPSW_HOME=${HEPSW_HOME:=/mt/hepsw/el7/x86_64} # install destination
 export WORKING_DIR=${WORKING_DIR:=/scratch/${USER}} #temporary working directory
 export BASE_DIR=${BASE_DIR:=$(dirname "$PWD/${BASH_SOURCE[0]}")} # directory of the config file
 export NUM_CORES=${NUM_CORES:=$(nproc --ignore=2 --all)} # number of available CPUs
+export PYTHON=${PYTHON:=python2} # python2 or python3
 
 ## boost
 export HEPSW_BOOST_DEPENDENCIES=()
@@ -111,6 +112,9 @@ export HEPSW_PROFESSOR_DEPENDENCIES=("EIGEN" "ROOT")
 export HEPSW_PROFESSOR_VERSION=2.3.2
 export HEPSW_PROFESSOR_NAME=Professor
 export HEPSW_PROFESSOR_DIR=${HEPSW_HOME}/${HEPSW_PROFESSOR_NAME}-${HEPSW_PROFESSOR_VERSION}
+if [[ "${PYTHON}" == "python3" ]]; then
+  HEPSW_PROFESSOR_DIR=${HEPSW_PROFESSOR_DIR}_${PYTHON}
+fi
 
 ## Pythia
 # depends on FastJet, HepMC2, LHAPDF & root
