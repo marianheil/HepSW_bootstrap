@@ -32,7 +32,8 @@ wget -O- http://fastjet.fr/repo/${package_name}.tar.gz | \
 cd ${package_name}/
 
 ## install
-./configure --prefix=${InstallDir} --enable-pyext --enable-allplugins || exit 2
+PYTHON_CONFIG=python-config \
+  ./configure --prefix=${InstallDir} --enable-pyext --enable-allplugins || exit 2
 make -j${NUM_CORES} || exit 2
 make check || exit 3
 make install || exit 3
