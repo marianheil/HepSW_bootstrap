@@ -33,7 +33,9 @@ wget -O- \
   tar zx || exit 1
 cd ${package_name}
 ./bootstrap.sh --prefix=${InstallDir} --with-python=$(which python) \
-  --with-libraries=all || exit 2
+  --with-libraries=all --with-toolset=${CC##*/} || exit 2
+
+  # Minimal for HEJ: --with-libraries=iostreams,ublas,headers
 
 ## install
 ./b2 -j${NUM_CORES} install || exit 3
