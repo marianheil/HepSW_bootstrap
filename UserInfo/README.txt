@@ -3,7 +3,7 @@ For further information see https://gitlab.dur.scotgrid.ac.uk/hepsw/install
 
 # Using a package
 
-To use a package add the following to you ~/.bashrc
+To use a package add the following to your ~/.bashrc
 
   source HEPSW_HOME/NAME-VERSION/NAMEenv.sh
 
@@ -12,7 +12,7 @@ version.
 
 Some packages are dependent on others, e.g. rivet depends on FastJet & HepMC2.
 The specific dependencies are listed in NAME-VERSION/NAMEdependencies.sh. Add
-everything listed in there to you ~/.bashrc.
+everything listed in there to your ~/.bashrc.
 
 # Missing dependencies, e.g. GLIBCXX 3.4.20
 
@@ -22,7 +22,7 @@ well, i.e. by adding
 
   export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib64:/usr/lib64
 
-to your .bashrc.
+to your ~/.bashrc.
 
 # Adding new or updating packages
 
