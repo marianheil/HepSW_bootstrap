@@ -1,0 +1,28 @@
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# GCC 5
+export gpath=/usr/local
+export CC=${gpath}/bin/gcc
+
+# load MPI
+module load mpi/openmpi-x86_64
+
+# other libraries e.g. GLIBCXX_3.4.20
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib64:/usr/lib64
+
+# No Dependencies
+## FastJet
+source /mt/hepsw/el7/x86_64/FastJet-3.3.2/FastJetenv.sh
+
+# Load dependencies explicitly (recommended)
+source /mt/hepsw/el7/x86_64/rivet-2.7.0/rivetenv.sh
+source /mt/hepsw/el7/x86_64/HepMC2-2.06.09/HepMC2env.sh
+## FastJet already loaded before
+# source /mt/hepsw/el7/x86_64/FastJet-3.3.2/FastJetenv.sh
+
+# or load dependencies implicitly
+source /mt/hepsw/el7/x86_64/Sherpa-2.2.8/Sherpaenv.sh
+## this loads FastJet a second time
+source /mt/hepsw/el7/x86_64/Sherpa-2.2.8/Sherpadependencies.sh
