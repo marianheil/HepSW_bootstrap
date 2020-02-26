@@ -33,4 +33,6 @@ git clone https://gitlab.com/openloops/OpenLoops.git . || exit 1
 ## install
 ./scons
 
-## no environment needed
+## create dummy environment
+touch ${InstallDir}/${name}env.sh
+printf "## OpenLoops 2\nexport OpenLoops_ROOT_DIR=${InstallDir}\n" > ${InstallDir}/${name}env.sh
