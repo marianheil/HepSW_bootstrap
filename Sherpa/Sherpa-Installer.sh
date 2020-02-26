@@ -32,10 +32,15 @@ git clone -b ${git_branch} https://gitlab.com/sherpa-team/sherpa.git ${package_n
 cd ${package_name}
 
 ## install
+include_root="no"
+if [[ " ${dependencies[@]} " =~ " ROOT " ]]; then
+  echo "Including Root I/O"
+  include_root=${HEPSW_ROOT_DIR}
+fi
 autoreconf -i
 ./configure --prefix ${InstallDir} --enable-fastjet=${HEPSW_FASTJET_DIR} \
   --enable-hepmc2=${HEPSW_HEPMC2_DIR} --enable-lhapdf=${HEPSW_LHAPDF_DIR} \
-  --enable-openloops=${HEPSW_OPENLOOPS_DIR} --enable-root=${HEPSW_ROOT_DIR} \
+  --enable-openloops=${HEPSW_OPENLOOPS_DIR} --enable-root=${include_root} \
   --enable-rivet=${HEPSW_RIVET_DIR} --enable-recola=${HEPSW_RECOLA_DIR} \
   --enable-hepmc3=${HEPSW_HEPMC3_DIR} --enable-hepmc3root --enable-pythia \
   --enable-mpi --enable-gzip CXXFLAGS="-std=c++11" --enable-ufo || exit 2
