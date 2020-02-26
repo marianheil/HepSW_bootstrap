@@ -2,6 +2,9 @@
 
 source ../config
 ../init.sh
+# overwrite compiler for MPI
+export CC=${MPICXX}   # C compiler
+export CXX=${MPICXX} # C++ compiler
 
 ## package specific variables
 name=${HEPSW_SHERPA_NAME}
@@ -37,7 +40,7 @@ if [[ " ${dependencies[@]} " =~ " ROOT " ]]; then
   echo "Including Root I/O"
   include_root=${HEPSW_ROOT_DIR}
 fi
-autoreconf -i
+autoreconf -if
 ./configure --prefix ${InstallDir} --enable-fastjet=${HEPSW_FASTJET_DIR} \
   --enable-hepmc2=${HEPSW_HEPMC2_DIR} --enable-lhapdf=${HEPSW_LHAPDF_DIR} \
   --enable-openloops=${HEPSW_OPENLOOPS_DIR} --enable-root=${include_root} \

@@ -8,6 +8,7 @@ export NUM_CORES=${NUM_CORES:=$(nproc --ignore=2 --all)} # number of available C
 export PYTHON=${PYTHON:=python2} # python2 or python3
 export CC=${CC:=gcc}   # C compiler
 export CXX=${CXX:=g++} # C++ compiler
+export MPICXX=${MPICXX:=mpic++} # C++ compiler for MPI
 
 ## boost
 export HEPSW_BOOST_DEPENDENCIES=()
