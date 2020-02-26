@@ -8,6 +8,7 @@ export NUM_CORES=${NUM_CORES:=$(nproc --ignore=2 --all)} # number of available C
 export PYTHON=${PYTHON:=python2} # python2 or python3
 export CC=${CC:=gcc}   # C compiler
 export CXX=${CXX:=g++} # C++ compiler
+export MPICXX=${MPICXX:=mpic++} # C++ compiler for MPI
 
 ## boost
 export HEPSW_BOOST_DEPENDENCIES=()
@@ -85,7 +86,7 @@ export HEPSW_YODA_DIR=${HEPSW_HOME}/${HEPSW_YODA_NAME}-${HEPSW_YODA_VERSION}
 
 ## HepMC3
 # depends on root (optional)
-export HEPSW_HEPMC3_DEPENDENCIES=("ROOT")
+export HEPSW_HEPMC3_DEPENDENCIES=()
 export HEPSW_HEPMC3_VERSION=3.1.2
 export HEPSW_HEPMC3_NAME=HepMC3
 export HEPSW_HEPMC3_DIR=${HEPSW_HOME}/${HEPSW_HEPMC3_NAME}-${HEPSW_HEPMC3_VERSION}
@@ -119,16 +120,16 @@ if [[ "${PYTHON}" == "python3" ]]; then
 fi
 
 ## Pythia
-# depends on FastJet, HepMC2, LHAPDF & root
-export HEPSW_PYTHIA_DEPENDENCIES=("FASTJET" "HEPMC2" "LHAPDF" "ROOT")
+# depends on FastJet, HepMC2, LHAPDF & root (optional)
+export HEPSW_PYTHIA_DEPENDENCIES=("FASTJET" "HEPMC2" "LHAPDF")
 export HEPSW_PYTHIA_VERSION=8.240
 export HEPSW_PYTHIA_NAME=Pythia
 export HEPSW_PYTHIA_DIR=${HEPSW_HOME}/${HEPSW_PYTHIA_NAME}-${HEPSW_PYTHIA_VERSION}
 
 ## Sherpa
-# depends on FastJet, HepMC2, HepMC3, LHAPDF, OpenLoops, recola, root & rivet
+# depends on FastJet, HepMC2, HepMC3, LHAPDF, OpenLoops, recola, root (optional) & rivet
 export HEPSW_SHERPA_DEPENDENCIES=("FASTJET" "HEPMC2" "HEPMC3" "LHAPDF" "OPENLOOPS"\
-  "RECOLA" "ROOT" "RIVET")
+  "RECOLA" "RIVET")
 export HEPSW_SHERPA_VERSION=2.2.8
 export HEPSW_SHERPA_NAME=Sherpa
 export HEPSW_SHERPA_DIR=${HEPSW_HOME}/${HEPSW_SHERPA_NAME}-${HEPSW_SHERPA_VERSION}
