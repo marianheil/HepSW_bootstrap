@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 source ../config
-../init.sh
 
 ## package specific variables
 name=${HEPSW_EVTGEN_NAME}
@@ -11,20 +10,8 @@ dependencies=${HEPSW_EVTGEN_DEPENDENCIES[@]}
 InstallDir=${HEPSW_EVTGEN_DIR}
 unpacked_dir=${name}/R$(echo ${HEPSW_EVTGEN_VERSION} | sed -e "s/\./-/g")
 
-## dependencies
-mkdir -p ${InstallDir}
-printf "" > ${InstallDir}/${name}dependencies.sh
-for dep in ${dependencies[@]}; do
-  dep_name="HEPSW_${dep}_NAME"
-  dep_version="HEPSW_${dep}_VERSION"
-  dep_dir="HEPSW_${dep}_DIR"
-  printf "## ${!dep_name} ${!dep_version}\n" \
-    >> ${InstallDir}/${name}dependencies.sh
-  printf "source ${!dep_dir}/${!dep_name}env.sh\n" \
-    >> ${InstallDir}/${name}dependencies.sh
-done
-
-source ${InstallDir}/${name}dependencies.sh || exit 1
+# general setup & environment
+source ../init.sh
 
 ## download
 cd ${WORKING_DIR}
