@@ -23,20 +23,20 @@ for dep in ${dependencies[@]}; do
     >> ${InstallDir}/${name}dependencies.sh
 done
 
-source ${InstallDir}/${name}dependencies.sh || exit 1
+source ${InstallDir}/${name}dependencies.sh
 
 ## download
 cd ${WORKING_DIR}
 wget -O- https://root.cern/download/root_v${HEPSW_ROOT_VERSION}.source.tar.gz | \
-  tar zx || exit 1
+  tar zx
 cd ${package_name}
 mkdir build
 cd build
 
 ## install
 cmake3 .. -DCMAKE_INSTALL_PREFIX=${InstallDir}
-make -j${NUM_CORES} || exit 2
-make install || exit 3
+make -j${NUM_CORES}
+make install
 rm -rf ${WORKING_DIR}/${package_name}
 
 ## environment

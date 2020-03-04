@@ -17,7 +17,7 @@ source ../init.sh
 cd ${WORKING_DIR}
 # wget -O- http://hepmc.web.cern.ch/hepmc/releases/${package_name}.tgz | \ # old style < 3.1
 wget -O- http://hepmc.web.cern.ch/hepmc/releases/${package_name}.tar.gz | \
-  tar xz || exit 2
+  tar xz
 cd ${package_name}
 mkdir build
 cd build
@@ -29,9 +29,9 @@ if [[ " ${dependencies[@]} " =~ " ROOT " ]]; then
   include_root="ON"
 fi
 cmake3 .. -DCMAKE_INSTALL_PREFIX=${InstallDir} \
-  -DHEPMC3_ENABLE_ROOTIO=${include_root} || exit 3
-make -j${NUM_CORES} || exit 3
-make install || exit 4
+  -DHEPMC3_ENABLE_ROOTIO=${include_root}
+make -j${NUM_CORES}
+make install
 rm -rf ${WORKING_DIR}/${package_name}
 
 ## environment

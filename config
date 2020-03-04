@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eo pipefail # exit when any command fails
 
 ## general setup (can be overwritten by user)
 export HEPSW_HOME=${HEPSW_HOME:=/mt/hepsw/el7/x86_64} # install destination
@@ -34,6 +35,12 @@ export HEPSW_FASTJET_VERSION=3.3.2
 export HEPSW_FASTJET_NAME=FastJet
 export HEPSW_FASTJET_DIR=${HEPSW_HOME}/${HEPSW_FASTJET_NAME}-${HEPSW_FASTJET_VERSION}
 export HEPSW_FASTJET_CONTRIB_VERSION=1.042
+
+## FORM
+export HEPSW_FORM_DEPENDENCIES=()
+export HEPSW_FORM_VERSION=4.2.1
+export HEPSW_FORM_NAME=FORM
+export HEPSW_FORM_DIR=${HEPSW_HOME}/${HEPSW_FORM_NAME}-${HEPSW_FORM_VERSION}
 
 ## HepMC2
 export HEPSW_HEPMC2_DEPENDENCIES=()

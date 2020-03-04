@@ -16,17 +16,17 @@ source ../init.sh
 ## download
 cd ${WORKING_DIR}
 wget  -O- https://evtgen.hepforge.org/downloads?f=${package_name}.tar.gz| \
-  tar xz || exit 1
+  tar xz
 cd ${unpacked_dir}
 
 ## install
 ./configure --prefix=${InstallDir} --pythiadir=${HEPSW_PYTHIA_DIR} \
-  --hepmcdir=${HEPSW_HEPMC2_DIR} || exit 2
+  --hepmcdir=${HEPSW_HEPMC2_DIR}
 ## EvtGen doesn't like running with multiple cores at once, but running make
 ## again seems to fix it ...
 make -j${NUM_CORES}
-make || exit 2
-make install || exit 3
+make
+make install
 rm -rf ${WORKING_DIR}/${package_name}
 
 ## environment

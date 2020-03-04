@@ -39,10 +39,10 @@ autoreconf -if
   --enable-rivet=${HEPSW_RIVET_DIR} --enable-recola=${HEPSW_RECOLA_DIR} \
   --enable-hepmc3=${HEPSW_HEPMC3_DIR} --enable-pythia \
   --enable-mpi --enable-gzip CXXFLAGS="-std=c++11" --enable-ufo \
-  --enable-lhole --enable-analysis || exit 2
-make -j${NUM_CORES} || exit 2
-make check || exit 3
-make install || exit 3
+  --enable-lhole --enable-analysis
+make -j${NUM_CORES}
+make check
+make install
 
 rm -rf ${WORKING_DIR}/${package_name}
 

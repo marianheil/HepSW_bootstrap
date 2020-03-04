@@ -15,16 +15,16 @@ source ../init.sh
 ## download
 cd ${WORKING_DIR}
 wget -O- https://github.com/jbeder/yaml-cpp/archive/${package_name}.tar.gz | \
-  tar xz || exit 1
+  tar xz
 cd yaml-cpp-${package_name}
 mkdir build
 cd build
 
 ## install
-cmake3 .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=${InstallDir} || exit 2
-make -j${NUM_CORES} || exit 2
-make test || exit 3
-make install || exit 3
+cmake3 .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=${InstallDir}
+make -j${NUM_CORES}
+make test
+make install
 
 rm -rf ${WORKING_DIR}/yaml-cpp-${package_name}
 

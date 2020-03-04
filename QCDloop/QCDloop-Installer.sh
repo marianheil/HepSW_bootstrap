@@ -14,15 +14,15 @@ source ../init.sh
 
 ## download
 cd ${WORKING_DIR}
-git clone https://github.com/scarrazza/${package_name}.git || exit 1
+git clone https://github.com/scarrazza/${package_name}.git
 cd ${package_name}
 mkdir build
 cd build
 
 ## install
-cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} .. || exit 2
-make -j${NUM_CORES} || exit 2
-make install || exit 3
+cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} ..
+make -j${NUM_CORES}
+make install
 rm -rf ${WORKING_DIR}/${package_name}
 
 ## environment

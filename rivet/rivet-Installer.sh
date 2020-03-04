@@ -30,10 +30,10 @@ fi
 ./configure --prefix=${InstallDir} \
   --with-yoda=${HEPSW_YODA_DIR} \
   --with-fastjet=${HEPSW_FASTJET_DIR} \
-  ${hepmc_flag} || exit 2
+  ${hepmc_flag}
 
-make -j${NUM_CORES} || exit 3
-make install || exit 3
-cp rivetenv.sh ${InstallDir} || exit 4 # not added automaticaly in Rivet 3
+make -j${NUM_CORES}
+make install
+cp rivetenv.sh ${InstallDir} # not added automaticaly in Rivet 3
 
 rm -rf ${WORKING_DIR}/${package_name}

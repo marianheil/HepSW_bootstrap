@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 source ../config
-../init.sh
+source ../init.sh
 
 ## package specific variables
 InstallDir=${HEPSW_LHAPDF_DIR}

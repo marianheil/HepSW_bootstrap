@@ -15,16 +15,16 @@ source ../init.sh
 ## download
 cd ${WORKING_DIR}
 wget -O- http://proj-clhep.web.cern.ch/proj-clhep/DISTRIBUTION/tarFiles/${package_name}.tgz | \
-  tar xz || exit 1
+  tar xz
 cd ${HEPSW_CLHEP_VERSION}
 mkdir build
 cd build
 
 ## install
-cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} ../CLHEP || exit 2
-make -j${NUM_CORES} || exit 2
-make test || exit 3
-make install || exit 3
+cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} ../CLHEP
+make -j${NUM_CORES}
+make test
+make install
 rm -rf ${WORKING_DIR}/${HEPSW_CLHEP_VERSION}
 
 ## environment

@@ -15,7 +15,7 @@ source ../init.sh
 ## download
 cd ${WORKING_DIR}
 wget  -O- http://home.thep.lu.se/~torbjorn/pythia8/${package_name}.tgz| \
-  tar xz || exit 1
+  tar xz
 cd ${package_name}
 
 ## install
@@ -28,9 +28,9 @@ autoreconf -i
 ./configure --prefix=${InstallDir} --with-fastjet3=${HEPSW_FASTJET_DIR} \
   --with-hepmc2=${HEPSW_HEPMC2_DIR} --with-lhapdf6=${HEPSW_LHAPDF_DIR} \
   ${include_root} --with-python-include=/usr/include/python2.7 \
-  --with-gzip --enable-shared --cxx-common="-g -O2 -pedantic -W -Wall -Wshadow -fPIC" || exit 2
-make -j${NUM_CORES} || exit 2
-make install || exit 3
+  --with-gzip --enable-shared --cxx-common="-g -O2 -pedantic -W -Wall -Wshadow -fPIC"
+make -j${NUM_CORES}
+make install
 
 rm -rf ${WORKING_DIR}/${package_name}
 

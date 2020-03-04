@@ -24,4 +24,4 @@ for dep in ${dependencies[@]}; do
   fi
 done
 
-source ${InstallDir}/${name}dependencies.sh || exit 1
+source ${InstallDir}/${name}dependencies.sh

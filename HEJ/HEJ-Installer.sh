@@ -15,7 +15,7 @@ source ../init.sh
 
 ## download
 cd ${WORKING_DIR}
-git clone -b ${git_branch} https://phab.hepforge.org/source/hej.git ${package_name} || exit 1
+git clone -b ${git_branch} https://phab.hepforge.org/source/hej.git ${package_name}
 cd ${package_name}
 git reset --hard ${HEPSW_HEJ_VERSION}
 
@@ -23,10 +23,10 @@ git reset --hard ${HEPSW_HEJ_VERSION}
 mkdir build
 cd build
 cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} -DBOOST_ROOT=${HEPSW_BOOST_DIR} \
-  -DHepMC_ROOT_DIR=${HEPSW_HEPMC2_DIR} .. || exit 2
-make -j${NUM_CORES} || exit 2
-make test || exit 3
-make install || exit 3
+  -DHepMC_ROOT_DIR=${HEPSW_HEPMC2_DIR} ..
+make -j${NUM_CORES}
+make test
+make install
 
 ## environment
 cp ${BASE_DIR}/TEMPLATEenv.sh ${InstallDir}/${name}env.sh
@@ -41,10 +41,10 @@ cd ${WORKING_DIR}/${package_name}/FixedOrderGen
 mkdir build
 cd build
 cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} -DBOOST_ROOT=${HEPSW_BOOST_DIR} \
-  .. || exit 4
-make -j${NUM_CORES} || exit 5
-make test || exit 6
-make install || exit 6
+  ..
+make -j${NUM_CORES}
+make test
+make install
 
 ## Cleanup
 rm -rf ${WORKING_DIR}/${package_name}

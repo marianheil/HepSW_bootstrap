@@ -15,14 +15,14 @@ source ../init.sh
 ## download
 cd ${WORKING_DIR}
 wget -O- https://lhapdf.hepforge.org/downloads/?f=${package_name}.tar.gz | \
-  tar xz || exit 1
+  tar xz
 cd ${package_name}
 
 ## install
-./configure --prefix=${InstallDir} || exit 2
-make -j${NUM_CORES} || exit 2
-make check || exit 3
-make install || exit 3
+./configure --prefix=${InstallDir}
+make -j${NUM_CORES}
+make check
+make install
 rm -rf ${WORKING_DIR}/${package_name}
 
 ## environment
