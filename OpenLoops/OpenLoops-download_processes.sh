@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 source ../config
-../init.sh
+source ../init.sh
 
 ## package specific variables
 InstallDir=${HEPSW_OPENLOOPS_DIR}
@@ -18,6 +18,6 @@ cd ${InstallDir}
 for process in ${processes[@]}
 do
   echo "Installing" ${process}
-  ./openloops libinstall ${process} || exit 1
+  ./openloops libinstall ${process}
 done
-rm -r process_src/* process_obj/* || exit 2
+rm -r process_src/* process_obj/*

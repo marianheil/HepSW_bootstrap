@@ -14,15 +14,15 @@ source ../init.sh
 ## download
 cd ${WORKING_DIR}
 wget -O- http://hepmc.web.cern.ch/hepmc/releases/${package_name}.tgz | \
-  tar zx || exit 1
+  tar zx
 mkdir ${name}-build
 cd ${name}-build
 
 ## install
 cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} -Dmomentum:STRING=GEV \
-      -Dlength:STRING=MM ../${package_name} || exit 2
-make -j${NUM_CORES} || exit 2
-make install || exit 3
+      -Dlength:STRING=MM ../${package_name}
+make -j${NUM_CORES}
+make install
 rm -rf ${WORKING_DIR}/${package_name}
 rm -rf ${WORKING_DIR}/${name}-build
 

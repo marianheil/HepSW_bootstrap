@@ -15,16 +15,16 @@ source ../init.sh
 ## download
 cd ${WORKING_DIR}
 wget -O- http://fastjet.fr/repo/${package_name}.tar.gz | \
-  tar zx || exit 1
+  tar zx
 cd ${package_name}/
 
 ## install
 PYTHON_CONFIG=python-config \
-  ./configure --prefix=${InstallDir} --enable-pyext --enable-allplugins || exit 2
+  ./configure --prefix=${InstallDir} --enable-pyext --enable-allplugins
 # Without Fortran:  --enable-cxxallplugins
-make -j${NUM_CORES} || exit 2
-make check || exit 3
-make install || exit 3
+make -j${NUM_CORES}
+make check
+make install
 rm -rf ${WORKING_DIR}/${package_name}
 
 ## environment
@@ -39,10 +39,10 @@ printf 'export PYTHONPATH='$InstallDir'/lib/python2.7/site-packages:'$InstallDir
 source ${InstallDir}/${name}env.sh
 cd ${WORKING_DIR}
 wget -O- http://fastjet.hepforge.org/contrib/downloads/fjcontrib-${HEPSW_FASTJET_CONTRIB_VERSION}.tar.gz \
-  | tar zx || exit 4
+  | tar zx
 cd fjcontrib-${HEPSW_FASTJET_CONTRIB_VERSION}
-./configure CXXFLAGS="-fPIC -std=c++11" CXX=${CXX} || exit 5
-make -j${NUM_CORES} fragile-shared-install || exit 5
-make check || exit 5
-make install || exit 5
+./configure CXXFLAGS="-fPIC -std=c++11" CXX=${CXX}
+make -j${NUM_CORES} fragile-shared-install
+make check
+make install
 rm -rf ${WORKING_DIR}/fjcontrib

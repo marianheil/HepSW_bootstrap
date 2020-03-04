@@ -15,18 +15,18 @@ source ../init.sh
 ## download
 cd ${WORKING_DIR}
 wget -O- "https://professor.hepforge.org/downloads/?f=${package_name}.tar.gz" | \
-  tar xz || exit 2
+  tar xz
 cd ${package_name}
 
 ## install
 CXXFLAGS="-I${HEPSW_EIGEN_DIR}/include/${HEPSW_EIGEN_NAME}3 -O3" \
   ROOTCONFIG=${HEPSW_ROOT_DIR}/bin/root-config \
   PREFIX=${InstallDir} \
-  make all -j${NUM_CORES} || exit 3
+  make all -j${NUM_CORES}
 CXXFLAGS="-I${HEPSW_EIGEN_DIR}/include/${HEPSW_EIGEN_NAME}3 -O3" \
   ROOTCONFIG=${HEPSW_ROOT_DIR}/bin/root-config \
   PREFIX=${InstallDir} \
-  make install || exit 4
+  make install
 
 rm -rf ${WORKING_DIR}/${package_name}
 

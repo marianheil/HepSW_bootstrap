@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eo pipefail
+set -eo pipefail # exit when any command fails
 
 ## general setup (can be overwritten by user)
 export HEPSW_HOME=${HEPSW_HOME:=/mt/hepsw/el7/x86_64} # install destination

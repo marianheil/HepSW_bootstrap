@@ -15,7 +15,7 @@ source ../init.sh
 ## download
 mkdir ${InstallDir}
 cd ${InstallDir}
-git clone https://gitlab.com/openloops/OpenLoops.git . || exit 1
+git clone https://gitlab.com/openloops/OpenLoops.git .
 
 ## install
 ./scons

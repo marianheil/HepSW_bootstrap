@@ -15,14 +15,14 @@ source ../init.sh
 ## download
 cd ${WORKING_DIR}
 wget -O- http://bitbucket.org/eigen/eigen/get/${package_name}.tar.gz | \
- tar xz || exit 2
+ tar xz
 cd ${name}-${name}-* # eigen has a hash at the end ...
 mkdir build
 cd build
 
 ## install
-cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} .. || exit 3
-make -j${NUM_CORES} install || exit 4
+cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} ..
+make -j${NUM_CORES} install
 rm -rf ${WORKING_DIR}/${package_name}
 
 ## environment

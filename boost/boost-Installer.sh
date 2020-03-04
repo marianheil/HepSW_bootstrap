@@ -17,15 +17,15 @@ cd ${WORKING_DIR}
 mkdir ${package_name}
 wget -O- \
   https://dl.bintray.com/boostorg/release/${HEPSW_BOOST_VERSION}/source/${package_name}.tar.gz | \
-  tar zx || exit 1
+  tar zx
 cd ${package_name}
 ./bootstrap.sh --prefix=${InstallDir} --with-python=$(which python) \
-  --with-libraries=all --with-toolset=${CC##*/} || exit 2
+  --with-libraries=all --with-toolset=${CC##*/}
 
   # Minimal for HEJ: --with-libraries=iostreams,ublas,headers
 
 ## install
-./b2 -j${NUM_CORES} install || exit 3
+./b2 -j${NUM_CORES} install
 rm -rf ${WORKING_DIR}/${package_name}
 
 ## environment

@@ -15,14 +15,14 @@ source ../init.sh
 ## download
 cd ${WORKING_DIR}
 wget -O- https://yoda.hepforge.org/downloads/?f=${package_name}.tar.gz | \
-  tar zx || exit 1
+  tar zx
 cd ${package_name}
 
 ## install
-./configure --prefix=${InstallDir} --enable-pyext || exit 2
-make -j${NUM_CORES} || exit 2
-# make check || exit 3 # makes problems
-make install || exit 3
+./configure --prefix=${InstallDir} --enable-pyext
+make -j${NUM_CORES}
+# make check # makes problems
+make install
 rm -rf ${WORKING_DIR}/${package_name}
 
 ## environment
