@@ -11,7 +11,8 @@ processes=(ppjj ppjj_ew ppjjj ppjjj_ew ppjjjj \
   pphjj_vbf pphjj_vbf_ew \
   ppaj2 ppajj ppajj2 ppajj_ew ppajjj \
   ppll2 ppllj ppllj2 ppllj_ew ppllj_nf5 pplljj pplljj_ew pplljjj \
-  pplnj_ckm pplnjj pplnjj_ckm pplnjj_ew pplnjjj)
+  pplnj_ckm pplnjj pplnjj_ckm pplnjj_ew pplnjjj \
+  ppllll ppllll2 ppllllj ppllllj2 ppllll_ew)
 
 ## install all processes
 cd ${InstallDir}
