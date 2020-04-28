@@ -24,11 +24,20 @@ if [[ " ${dependencies[@]} " =~ " ROOT " ]]; then
   echo "Including Root I/O"
   include_root=-"-with-root=${HEPSW_ROOT_DIR}"
 fi
-autoreconf -i
+if [[ "${PYTHON}" == "python3" ]]; then
+  # TODO make this neater
+  PYTHON_INCLUDE="/usr/include/python3.6m"
+else
+  PYTHON_INCLUDE="/usr/include/python2.7"
+fi
+if [[ ! -e configure ]]; then
+  autoreconf -i # configure script might be pre-generated for some versions
+fi
 ./configure --prefix=${InstallDir} --with-fastjet3=${HEPSW_FASTJET_DIR} \
   --with-hepmc2=${HEPSW_HEPMC2_DIR} --with-lhapdf6=${HEPSW_LHAPDF_DIR} \
-  ${include_root} --with-python-include=/usr/include/python2.7 \
-  --with-gzip --enable-shared --cxx-common="-g -O2 -pedantic -W -Wall -Wshadow -fPIC"
+  --with-python --with-python-lib=/usr/lib64 --with-python-include=${PYTHON_INCLUDE} \
+  ${include_root} --with-gzip \
+  --enable-shared --cxx-common="-g -O2 -pedantic -W -Wall -Wshadow -fPIC"
 make -j${NUM_CORES}
 make install
 

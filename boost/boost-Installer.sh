@@ -14,12 +14,12 @@ source ../init.sh
 
 ## download
 cd ${WORKING_DIR}
-mkdir ${package_name}
+mkdir -p ${package_name}
 wget -O- \
   https://dl.bintray.com/boostorg/release/${HEPSW_BOOST_VERSION}/source/${package_name}.tar.gz | \
   tar zx
 cd ${package_name}
-./bootstrap.sh --prefix=${InstallDir} --with-python=$(which python) \
+./bootstrap.sh --prefix=${InstallDir} --with-python=${PYTHON} \
   --with-libraries=all --with-toolset=${CC##*/}
 
   # Minimal for HEJ: --with-libraries=iostreams,ublas,headers

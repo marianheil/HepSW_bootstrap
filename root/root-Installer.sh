@@ -30,11 +30,13 @@ cd ${WORKING_DIR}
 wget -O- https://root.cern/download/root_v${HEPSW_ROOT_VERSION}.source.tar.gz | \
   tar zx
 cd ${package_name}
-mkdir build
-cd build
+## root actually includes a folder names "build"
+BUILD_DIR=$(mktemp -p ${PWD} -d build-XXXXX)
+cd ${BUILD_DIR}
 
 ## install
 cmake3 .. -DCMAKE_INSTALL_PREFIX=${InstallDir}
+# TODO check python
 make -j${NUM_CORES}
 make install
 rm -rf ${WORKING_DIR}/${package_name}

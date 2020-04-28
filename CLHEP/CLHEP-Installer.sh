@@ -14,7 +14,7 @@ source ../init.sh
 
 ## download
 cd ${WORKING_DIR}
-wget -O- http://proj-clhep.web.cern.ch/proj-clhep/DISTRIBUTION/tarFiles/${package_name}.tgz | \
+wget -O- http://proj-clhep.web.cern.ch/proj-clhep/dist1/${package_name}.tgz | \
   tar xz
 cd ${HEPSW_CLHEP_VERSION}
 mkdir build

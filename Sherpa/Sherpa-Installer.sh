@@ -40,6 +40,7 @@ autoreconf -if
   --enable-hepmc3=${HEPSW_HEPMC3_DIR} --enable-pythia \
   --enable-mpi --enable-gzip CXXFLAGS="-std=c++11" --enable-ufo \
   --enable-lhole --enable-analysis
+# TODO add python
 make -j${NUM_CORES}
 make check
 make install
