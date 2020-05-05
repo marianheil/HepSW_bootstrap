@@ -11,6 +11,13 @@ export CC=${CC:=gcc}   # C compiler
 export CXX=${CXX:=g++} # C++ compiler
 export MPICXX=${MPICXX:=mpic++} # C++ compiler for MPI
 
+## overwrite default python
+export PYTHON=$(readlink -f $(which ${PYTHON}))
+function python(){
+  command ${PYTHON} "$@"
+}
+export -f python
+
 ## boost
 export HEPSW_BOOST_DEPENDENCIES=()
 export HEPSW_BOOST_VERSION=1.70.0
