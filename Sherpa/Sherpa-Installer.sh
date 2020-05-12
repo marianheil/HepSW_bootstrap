@@ -12,6 +12,7 @@ git_branch=rel-$(echo ${HEPSW_SHERPA_VERSION} | sed -e "s/\./-/g")
 
 # general setup & environment
 source ../init.sh
+source ${HEPSW_SWIG_DIR}/${HEPSW_SWIG_NAME}env.sh
 
 # overwrite compiler for MPI
 export CC=${MPICXX}   # C compiler
@@ -39,8 +40,7 @@ autoreconf -if
   --enable-rivet=${HEPSW_RIVET_DIR} --enable-recola=${HEPSW_RECOLA_DIR} \
   --enable-hepmc3=${HEPSW_HEPMC3_DIR} --enable-pythia \
   --enable-mpi --enable-gzip CXXFLAGS="-std=c++11" --enable-ufo \
-  --enable-lhole --enable-analysis
-# TODO add python
+  --enable-lhole --enable-analysis --enable-pyext
 make -j${NUM_CORES}
 make check
 make install
@@ -53,3 +53,9 @@ sed -i -e "s TEMPLATE_PREFIX ${InstallDir} g" ${InstallDir}/${name}env.sh
 sed -i -e "s/TEMPLATE/${name}/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.PATH/export PATH/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.*//g" ${InstallDir}/${name}env.sh
+if [[ "${PYTHON}" =~ "python3" ]]; then
+  # TODO check this
+  printf 'export PYTHONPATH='$InstallDir'/lib/python3.6/site-packages:${PYTHONPATH}\n' >> ${InstallDir}/${name}env.sh
+else
+  printf 'export PYTHONPATH='$InstallDir'/lib/python2.7/site-packages:${PYTHONPATH}\n' >> ${InstallDir}/${name}env.sh
+fi
