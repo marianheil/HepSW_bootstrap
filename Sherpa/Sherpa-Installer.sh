@@ -32,6 +32,9 @@ fi
 if [[ " ${HEPSW_HEPMC3_DEPENDENCIES[@]} " =~ " ROOT " ]]; then
   echo "Including HepMC3 Root I/O"
   include_root=${include_root}" --enable-hepmc3root"
+else
+  echo "Without HepMC3 Root I/O"
+  include_root=${include_root}" --disable-hepmc3root"
 fi
 autoreconf -if
 ./configure --prefix ${InstallDir} --enable-fastjet=${HEPSW_FASTJET_DIR} \
@@ -54,7 +57,6 @@ sed -i -e "s/TEMPLATE/${name}/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.PATH/export PATH/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.*//g" ${InstallDir}/${name}env.sh
 if [[ "${PYTHON}" =~ "python3" ]]; then
-  # TODO check this
   printf 'export PYTHONPATH='$InstallDir'/lib/python3.6/site-packages:${PYTHONPATH}\n' >> ${InstallDir}/${name}env.sh
 else
   printf 'export PYTHONPATH='$InstallDir'/lib/python2.7/site-packages:${PYTHONPATH}\n' >> ${InstallDir}/${name}env.sh
