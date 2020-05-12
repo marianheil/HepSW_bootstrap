@@ -92,6 +92,12 @@ export HEPSW_ROOT_VERSION=6.18.04
 export HEPSW_ROOT_NAME=root
 export HEPSW_ROOT_DIR=${HEPSW_HOME}/${HEPSW_ROOT_NAME}-${HEPSW_ROOT_VERSION}
 
+## swig
+export HEPSW_SWIG_DEPENDENCIES=()
+export HEPSW_SWIG_VERSION=4.0.1
+export HEPSW_SWIG_NAME=swig
+export HEPSW_SWIG_DIR=${HEPSW_HOME}/${HEPSW_SWIG_NAME}-${HEPSW_SWIG_VERSION}
+
 ## yaml-cpp
 export HEPSW_YAML_DEPENDENCIES=()
 export HEPSW_YAML_VERSION=0.6.3
@@ -157,6 +163,7 @@ fi
 
 ## Sherpa
 # depends on FastJet, HepMC2, HepMC3, LHAPDF, OpenLoops, recola, root (optional) & rivet
+# "swig" might be needed for _compiling_ with python, it is not needed at runtime
 export HEPSW_SHERPA_DEPENDENCIES=("FASTJET" "HEPMC2" "HEPMC3" "LHAPDF" "OPENLOOPS"\
   "RECOLA" "RIVET")
 export HEPSW_SHERPA_VERSION=2.2.9
