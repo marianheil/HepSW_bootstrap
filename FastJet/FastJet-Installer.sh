@@ -19,7 +19,7 @@ wget -O- http://fastjet.fr/repo/${package_name}.tar.gz | \
 cd ${package_name}/
 
 ## install
-PYTHON_CONFIG=python-config \
+PYTHON_CONFIG=${PYTHON}-config \
   ./configure --prefix=${InstallDir} --enable-pyext --enable-allplugins
 # Without Fortran:  --enable-cxxallplugins
 make -j${NUM_CORES}
@@ -33,7 +33,12 @@ sed -i -e "s TEMPLATE_PREFIX ${InstallDir} g" ${InstallDir}/${name}env.sh
 sed -i -e "s/TEMPLATE/${name}/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.PATH/export PATH/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.*//g" ${InstallDir}/${name}env.sh
-printf 'export PYTHONPATH='$InstallDir'/lib/python2.7/site-packages:'$InstallDir'/lib64/python2.7/site-packages:${PYTHONPATH}\n' >> ${InstallDir}/${name}env.sh
+if [[ "${PYTHON}" =~ "python3" ]]; then
+  # TODO make this neater
+  printf 'export PYTHONPATH='$InstallDir'/lib/python3.6/site-packages:'$InstallDir'/lib64/python3.6/site-packages:${PYTHONPATH}\n' >> ${InstallDir}/${name}env.sh
+else
+  printf 'export PYTHONPATH='$InstallDir'/lib/python2.7/site-packages:'$InstallDir'/lib64/python2.7/site-packages:${PYTHONPATH}\n' >> ${InstallDir}/${name}env.sh
+fi
 
 ## install FastJet Contrib
 source ${InstallDir}/${name}env.sh
@@ -45,4 +50,4 @@ cd fjcontrib-${HEPSW_FASTJET_CONTRIB_VERSION}
 make -j${NUM_CORES} fragile-shared-install
 make check
 make install
-rm -rf ${WORKING_DIR}/fjcontrib
+rm -rf ${WORKING_DIR}/fjcontrib-${HEPSW_FASTJET_CONTRIB_VERSION}

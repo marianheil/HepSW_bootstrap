@@ -4,7 +4,8 @@ source ../config
 
 ## package specific variables
 name=${HEPSW_HEPMC2_NAME}
-package_name=hepmc${HEPSW_HEPMC2_VERSION}
+package_name=HepMC-${HEPSW_HEPMC2_VERSION}
+download_name=hepmc${HEPSW_HEPMC2_VERSION} # !=package_name since 2.06.10
 
 InstallDir=${HEPSW_HEPMC2_DIR}
 
@@ -13,9 +14,9 @@ source ../init.sh
 
 ## download
 cd ${WORKING_DIR}
-wget -O- http://hepmc.web.cern.ch/hepmc/releases/${package_name}.tgz | \
+wget -O- http://hepmc.web.cern.ch/hepmc/releases/${download_name}.tgz | \
   tar zx
-mkdir ${name}-build
+mkdir -p ${name}-build
 cd ${name}-build
 
 ## install

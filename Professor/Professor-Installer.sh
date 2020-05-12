@@ -36,4 +36,9 @@ sed -i -e "s TEMPLATE_PREFIX ${InstallDir} g" ${InstallDir}/${name}env.sh
 sed -i -e "s/TEMPLATE/${name}/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.PATH/export PATH/g" ${InstallDir}/${name}env.sh
 sed -i -e "s/#.export.*//g" ${InstallDir}/${name}env.sh
-printf 'export PYTHONPATH='$InstallDir'/lib/python2.7/site-packages:'$InstallDir'/lib64/python2.7/site-packages:${PYTHONPATH}\n' >> ${InstallDir}/${name}env.sh
+if [[ "${PYTHON}" =~ "python3" ]]; then
+  # TODO make this neater
+  printf 'export PYTHONPATH='$InstallDir'/lib64/python3.6/site-packages:${PYTHONPATH}\n' >> ${InstallDir}/${name}env.sh
+else
+  printf 'export PYTHONPATH='$InstallDir'/lib64/python2.7/site-packages:${PYTHONPATH}\n' >> ${InstallDir}/${name}env.sh
+fi
