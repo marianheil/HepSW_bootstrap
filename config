@@ -42,8 +42,8 @@ export HEPSW_FASTJET_VERSION=3.3.3
 export HEPSW_FASTJET_NAME=FastJet
 export HEPSW_FASTJET_DIR=${HEPSW_HOME}/${HEPSW_FASTJET_NAME}-${HEPSW_FASTJET_VERSION}
 export HEPSW_FASTJET_CONTRIB_VERSION=1.044
-if [[ "${PYTHON}" =~ "python3" ]]; then
-  HEPSW_FASTJET_DIR=${HEPSW_FASTJET_DIR}_python3
+if [[ "${PYTHON}" =~ "python2" ]]; then
+  HEPSW_FASTJET_DIR=${HEPSW_FASTJET_DIR}_python2
 fi
 
 ## FORM
@@ -64,8 +64,8 @@ export HEPSW_LHAPDF_VERSION=6.2.3
 export HEPSW_LHAPDF_NAME=LHAPDF
 export HEPSW_LHAPDF_DIR=${HEPSW_HOME}/${HEPSW_LHAPDF_NAME}-${HEPSW_LHAPDF_VERSION}
 export HEPSW_LHAPDF_PDF_SOURCE=http://www.hepforge.org/archive/lhapdf/pdfsets/6.2
-if [[ "${PYTHON}" =~ "python3" ]]; then
-  HEPSW_LHAPDF_DIR=${HEPSW_LHAPDF_DIR}_python3
+if [[ "${PYTHON}" =~ "python2" ]]; then
+  HEPSW_LHAPDF_DIR=${HEPSW_LHAPDF_DIR}_python2
 fi
 
 ## OpenLoops
@@ -109,8 +109,8 @@ export HEPSW_YODA_DEPENDENCIES=()
 export HEPSW_YODA_VERSION=1.8.1
 export HEPSW_YODA_NAME=YODA
 export HEPSW_YODA_DIR=${HEPSW_HOME}/${HEPSW_YODA_NAME}-${HEPSW_YODA_VERSION}
-if [[ "${PYTHON}" =~ "python3" ]]; then
-  HEPSW_YODA_DIR=${HEPSW_YODA_DIR}_python3
+if [[ "${PYTHON}" =~ "python2" ]]; then
+  HEPSW_YODA_DIR=${HEPSW_YODA_DIR}_python2
 fi
 
 ## HepMC3
@@ -129,8 +129,8 @@ export HEPSW_RIVET_DIR=${HEPSW_HOME}/${HEPSW_RIVET_NAME}-${HEPSW_RIVET_VERSION}
 if [[ " ${HEPSW_RIVET_DEPENDENCIES[@]} " =~ " HEPMC2 " ]]; then
   HEPSW_RIVET_DIR=${HEPSW_RIVET_DIR}_${HEPSW_HEPMC2_NAME}
 fi
-if [[ "${PYTHON}" =~ "python3" ]]; then
-  HEPSW_RIVET_DIR=${HEPSW_RIVET_DIR}_python3
+if [[ "${PYTHON}" =~ "python2" ]]; then
+  HEPSW_RIVET_DIR=${HEPSW_RIVET_DIR}_python2
 fi
 
 ## HEJ
@@ -147,8 +147,8 @@ export HEPSW_PROFESSOR_DEPENDENCIES=("EIGEN" "ROOT")
 export HEPSW_PROFESSOR_VERSION=2.3.2
 export HEPSW_PROFESSOR_NAME=Professor
 export HEPSW_PROFESSOR_DIR=${HEPSW_HOME}/${HEPSW_PROFESSOR_NAME}-${HEPSW_PROFESSOR_VERSION}
-if [[ "${PYTHON}" =~ "python3" ]]; then
-  HEPSW_PROFESSOR_DIR=${HEPSW_PROFESSOR_DIR}_python3
+if [[ "${PYTHON}" =~ "python2" ]]; then
+  HEPSW_PROFESSOR_DIR=${HEPSW_PROFESSOR_DIR}_python2
 fi
 
 ## Pythia
@@ -157,8 +157,8 @@ export HEPSW_PYTHIA_DEPENDENCIES=("FASTJET" "HEPMC2" "LHAPDF")
 export HEPSW_PYTHIA_VERSION=8.244
 export HEPSW_PYTHIA_NAME=Pythia
 export HEPSW_PYTHIA_DIR=${HEPSW_HOME}/${HEPSW_PYTHIA_NAME}-${HEPSW_PYTHIA_VERSION}
-if [[ "${PYTHON}" =~ "python3" ]]; then
-  HEPSW_PYTHIA_DIR=${HEPSW_PYTHIA_DIR}_python3
+if [[ "${PYTHON}" =~ "python2" ]]; then
+  HEPSW_PYTHIA_DIR=${HEPSW_PYTHIA_DIR}_python2
 fi
 
 ## Sherpa
@@ -169,6 +169,9 @@ export HEPSW_SHERPA_DEPENDENCIES=("FASTJET" "HEPMC2" "HEPMC3" "LHAPDF" "OPENLOOP
 export HEPSW_SHERPA_VERSION=2.2.9
 export HEPSW_SHERPA_NAME=Sherpa
 export HEPSW_SHERPA_DIR=${HEPSW_HOME}/${HEPSW_SHERPA_NAME}-${HEPSW_SHERPA_VERSION}
+if [[ "${PYTHON}" =~ "python2" ]]; then
+  HEPSW_SHERPA_DIR=${HEPSW_SHERPA_DIR}_python2
+fi
 
 ## EvtGen
 # depends on HepMC2, Pythia
