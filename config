@@ -166,7 +166,7 @@ fi
 # "swig" might be needed for _compiling_ with python, it is not needed at runtime
 export HEPSW_SHERPA_DEPENDENCIES=("FASTJET" "HEPMC2" "HEPMC3" "LHAPDF" "OPENLOOPS"\
   "RECOLA" "RIVET")
-export HEPSW_SHERPA_VERSION=2.2.9
+export HEPSW_SHERPA_VERSION=2.2.10
 export HEPSW_SHERPA_NAME=Sherpa
 export HEPSW_SHERPA_DIR=${HEPSW_HOME}/${HEPSW_SHERPA_NAME}-${HEPSW_SHERPA_VERSION}
 if [[ "${PYTHON}" =~ "python2" ]]; then
