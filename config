@@ -63,7 +63,7 @@ export HEPSW_LHAPDF_DEPENDENCIES=()
 export HEPSW_LHAPDF_VERSION=6.2.3
 export HEPSW_LHAPDF_NAME=LHAPDF
 export HEPSW_LHAPDF_DIR=${HEPSW_HOME}/${HEPSW_LHAPDF_NAME}-${HEPSW_LHAPDF_VERSION}
-export HEPSW_LHAPDF_PDF_SOURCE=http://www.hepforge.org/archive/lhapdf/pdfsets/6.2
+export HEPSW_LHAPDF_PDF_SOURCE=http://lhapdfsets.web.cern.ch/lhapdfsets/current
 if [[ "${PYTHON}" =~ "python2" ]]; then
   HEPSW_LHAPDF_DIR=${HEPSW_LHAPDF_DIR}_python2
 fi
