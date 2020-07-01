@@ -22,7 +22,14 @@ cd ${package_name}
 ./autogen.sh
 ./configure --prefix ${InstallDir} --without-java --without-octave --without-r
 make -j${NUM_CORES}
-make check -j${NUM_CORES}
+
+check_flags="-j${NUM_CORES}"
+## python 3 is not correctly picked up for tests
+## see https://github.com/swig/swig/issues/1805#issuecomment-636987898
+if [[ "${PYTHON}" =~ "python3" ]]; then
+  check_flags+=" PY3=y"
+fi
+make check ${check_flags}
 make install
 
 rm -rf ${WORKING_DIR}/${package_name}
