@@ -15,7 +15,7 @@ source ../init.sh
 
 ## download
 cd ${WORKING_DIR}
-# git clone -b ${git_branch} https://github.com/swig/swig.git ${package_name}
+git clone -b ${git_branch} https://github.com/swig/swig.git ${package_name}
 cd ${package_name}
 
 ## install
