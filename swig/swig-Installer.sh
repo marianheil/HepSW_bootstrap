@@ -8,14 +8,14 @@ package_name=${name}-${HEPSW_SWIG_VERSION}
 dependencies=${HEPSW_SWIG_DEPENDENCIES[@]}
 
 InstallDir=${HEPSW_SWIG_DIR}
-git_branch=rel-${HEPSW_SWIG_VERSION}
 
 # general setup & environment
 source ../init.sh
 
 ## download
 cd ${WORKING_DIR}
-git clone -b ${git_branch} https://github.com/swig/swig.git ${package_name}
+wget -O- http://prdownloads.sourceforge.net/swig/${package_name}.tar.gz | \
+  tar xz
 cd ${package_name}
 
 ## install
