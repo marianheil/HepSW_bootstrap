@@ -14,7 +14,7 @@ source ../init.sh
 
 ## download
 cd ${WORKING_DIR}
-wget  -O- http://home.thep.lu.se/~torbjorn/pythia8/${package_name}.tgz| \
+wget -O- http://home.thep.lu.se/~torbjorn/pythia8/${package_name}.tgz | \
   tar xz
 cd ${package_name}
 
