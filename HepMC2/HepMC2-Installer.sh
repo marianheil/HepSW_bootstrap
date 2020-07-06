@@ -23,6 +23,7 @@ cd ${name}-build
 cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} -Dmomentum:STRING=GEV \
       -Dlength:STRING=MM ../${package_name}
 make -j${NUM_CORES}
+ctest -j ${NUM_CORES}
 make install
 rm -rf ${WORKING_DIR}/${package_name}
 rm -rf ${WORKING_DIR}/${name}-build
