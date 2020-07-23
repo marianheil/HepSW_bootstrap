@@ -17,7 +17,7 @@ cd ${WORKING_DIR}
 wget -O- https://recola.hepforge.org/downloads/?f=${package_name}.tar.gz | \
   tar xz
 cd ${package_name}
-mkdir build
+mkdir -p build
 cd build
 
 ## install
