@@ -21,9 +21,9 @@ mkdir build
 cd build
 
 ## install
-cmake3 .. -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=${InstallDir}
+cmake3 .. -DYAML_BUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=${InstallDir}
 make -j${NUM_CORES}
-make test
+ctest -j${NUM_CORES}
 make install
 
 rm -rf ${WORKING_DIR}/yaml-cpp-${package_name}
