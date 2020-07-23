@@ -2,9 +2,8 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# GCC 5
-export gpath=/usr/local
-export CC=${gpath}/bin/gcc
+# GCC 8
+source /opt/rh/devtoolset-8/enable
 
 # load MPI
 module load mpi/openmpi-x86_64
@@ -15,7 +14,7 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib64:/usr/lib64
 # FastJet (No Dependencies)
 source /mt/hepsw/el7/x86_64/FastJet-3.3.2/FastJetenv.sh
 
-# Rivet 
+# Rivet
 source /mt/hepsw/el7/x86_64/rivet-2.7.0/rivetenv.sh
 # Load dependencies explicitly (recommended)
 source /mt/hepsw/el7/x86_64/HepMC2-2.06.09/HepMC2env.sh

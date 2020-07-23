@@ -35,6 +35,15 @@ Explicitly loading in recommended to avoid conflicting dependencies.
 
 ## Common Problems
 
+### Old gcc
+
+This installation uses gcc version 8 from /opt/rh/devtoolset-8. To enable the
+new version add
+
+  source /opt/rh/devtoolset-8/enable
+
+to your ~/.bashrc
+
 ### System dependencies missing, e.g. GLIBCXX 3.4.20
 
 Some system dependencies are installed in non-standard locations and might be
