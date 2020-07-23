@@ -25,7 +25,7 @@ cd build
 cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} -DBOOST_ROOT=${HEPSW_BOOST_DIR} \
   -DHepMC_ROOT_DIR=${HEPSW_HEPMC2_DIR} ..
 make -j${NUM_CORES}
-make test
+ctest # -j ${NUM_CORES} # Multi-core tests are broken below HEJ 2.1
 make install
 
 ## environment
@@ -43,7 +43,7 @@ cd build
 cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} -DBOOST_ROOT=${HEPSW_BOOST_DIR} \
   ..
 make -j${NUM_CORES}
-make test
+ctest -j ${NUM_CORES}
 make install
 
 ## Cleanup

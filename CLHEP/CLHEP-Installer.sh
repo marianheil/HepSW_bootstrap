@@ -23,7 +23,7 @@ cd build
 ## install
 cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} ../CLHEP
 make -j${NUM_CORES}
-make test
+ctest -j ${NUM_CORES}
 make install
 rm -rf ${WORKING_DIR}/${HEPSW_CLHEP_VERSION}
 

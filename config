@@ -2,7 +2,7 @@
 set -eo pipefail # exit when any command fails
 
 ## general setup (can be overwritten by user)
-export HEPSW_HOME=${HEPSW_HOME:=/mt/hepsw/el7/x86_64} # install destination
+export HEPSW_HOME=${HEPSW_HOME:=/mt/hepsw/el7/x86_64/gcc8} # install destination
 export WORKING_DIR=${WORKING_DIR:=/scratch/${USER}} #temporary working directory
 export BASE_DIR=${BASE_DIR:=$(dirname "$PWD/${BASH_SOURCE[0]}")} # directory of the config file
 export NUM_CORES=${NUM_CORES:=$(nproc --ignore=2 --all)} # number of available CPUs
@@ -137,7 +137,7 @@ fi
 # depends on boost, CLHEP, FastJet, HepMC2, LHAPDF, QCDloop, yaml & rivet
 export HEPSW_HEJ_DEPENDENCIES=("BOOST" "CLHEP" "FASTJET" "HEPMC2" "LHAPDF"\
   "QCDLOOP" "YAML" "RIVET")
-export HEPSW_HEJ_VERSION=2.0.5
+export HEPSW_HEJ_VERSION=2.0.6
 export HEPSW_HEJ_NAME=HEJ
 export HEPSW_HEJ_DIR=${HEPSW_HOME}/${HEPSW_HEJ_NAME}-${HEPSW_HEJ_VERSION}
 

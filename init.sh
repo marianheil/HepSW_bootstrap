@@ -5,8 +5,8 @@ mkdir -p ${HEPSW_HOME}
 mkdir -p ${WORKING_DIR}
 
 # copy README
-cp ../UserInfo/README.txt ${HEPSW_HOME}/README.txt
-sed  -i -e "s HEPSW_HOME ${HEPSW_HOME} g" ${HEPSW_HOME}/README.txt
+cp ../UserInfo/README.md ${HEPSW_HOME}/README.md
+sed  -i -e "s HEPSW_HOME ${HEPSW_HOME} g" ${HEPSW_HOME}/README.md
 
 ## init dependencies
 if [[ -n ${InstallDir} ]]; then
