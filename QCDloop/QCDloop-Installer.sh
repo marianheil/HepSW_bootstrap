@@ -20,7 +20,7 @@ mkdir build
 cd build
 
 ## install
-cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} ..
+${CMAKE} -DCMAKE_INSTALL_PREFIX=${InstallDir} ..
 make -j${NUM_CORES}
 make install
 rm -rf ${WORKING_DIR}/${package_name}

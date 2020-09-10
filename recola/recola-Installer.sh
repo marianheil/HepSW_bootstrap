@@ -21,7 +21,7 @@ mkdir -p build
 cd build
 
 ## install
-cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} ..
+${CMAKE} -DCMAKE_INSTALL_PREFIX=${InstallDir} ..
 ## in recola2 add:
 # -Dmodel=SM
 make # -j${NUM_CORES} doesn't work for some unknown reason (tested 1.4.0)

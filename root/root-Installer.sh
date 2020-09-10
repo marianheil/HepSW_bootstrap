@@ -35,7 +35,7 @@ BUILD_DIR=$(mktemp -p ${PWD} -d build-XXXXX)
 cd ${BUILD_DIR}
 
 ## install
-cmake3 .. -DCMAKE_INSTALL_PREFIX=${InstallDir}
+${CMAKE} .. -DCMAKE_INSTALL_PREFIX=${InstallDir}
 # TODO check python
 make -j${NUM_CORES}
 make install

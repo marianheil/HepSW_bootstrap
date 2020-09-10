@@ -21,7 +21,7 @@ mkdir build
 cd build
 
 ## install
-cmake3 .. -DYAML_BUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=${InstallDir}
+${CMAKE} .. -DYAML_BUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX=${InstallDir}
 make -j${NUM_CORES}
 ctest -j${NUM_CORES}
 make install

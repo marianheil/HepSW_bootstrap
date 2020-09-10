@@ -29,7 +29,7 @@ if [[ " ${dependencies[@]} " =~ " ROOT " ]]; then
   include_root="ON"
 fi
 # HEPMC3_Python_SITEARCH since 3.2
-cmake3 .. -DCMAKE_INSTALL_PREFIX=${InstallDir} \
+${CMAKE} .. -DCMAKE_INSTALL_PREFIX=${InstallDir} \
   -DHEPMC3_ENABLE_ROOTIO=${include_root} \
   -DHEPMC3_Python_SITEARCH27=${InstallDir}/lib64/python2.7/site-packages \
   -DHEPMC3_Python_SITEARCH36=${InstallDir}/lib64/python3.6/site-packages \

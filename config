@@ -10,6 +10,7 @@ export PYTHON=${PYTHON:=python3} # python2 or python3
 export CC=${CC:=gcc}   # C compiler
 export CXX=${CXX:=g++} # C++ compiler
 export MPICXX=${MPICXX:=mpic++} # C++ compiler for MPI
+export CMAKE=${CMAKE:=cmake3} # cmake executable
 
 ## overwrite default python
 export PYTHON=$(readlink -f $(which ${PYTHON}))

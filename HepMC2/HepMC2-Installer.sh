@@ -20,7 +20,7 @@ mkdir -p ${name}-build
 cd ${name}-build
 
 ## install
-cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} -Dmomentum:STRING=GEV \
+${CMAKE} -DCMAKE_INSTALL_PREFIX=${InstallDir} -Dmomentum:STRING=GEV \
       -Dlength:STRING=MM ../${package_name}
 make -j${NUM_CORES}
 ctest -j ${NUM_CORES}

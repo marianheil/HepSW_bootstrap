@@ -22,7 +22,7 @@ git reset --hard ${HEPSW_HEJ_VERSION}
 ## install HEJ
 mkdir build
 cd build
-cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} -DBOOST_ROOT=${HEPSW_BOOST_DIR} \
+${CMAKE} -DCMAKE_INSTALL_PREFIX=${InstallDir} -DBOOST_ROOT=${HEPSW_BOOST_DIR} \
   -DHepMC_ROOT_DIR=${HEPSW_HEPMC2_DIR} ..
 make -j${NUM_CORES}
 ctest # -j ${NUM_CORES} # Multi-core tests are broken below HEJ 2.1
@@ -40,7 +40,7 @@ source ${InstallDir}/${name}env.sh
 cd ${WORKING_DIR}/${package_name}/FixedOrderGen
 mkdir build
 cd build
-cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} -DBOOST_ROOT=${HEPSW_BOOST_DIR} \
+${CMAKE} -DCMAKE_INSTALL_PREFIX=${InstallDir} -DBOOST_ROOT=${HEPSW_BOOST_DIR} \
   ..
 make -j${NUM_CORES}
 ctest -j ${NUM_CORES}

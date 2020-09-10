@@ -21,7 +21,7 @@ mkdir build
 cd build
 
 ## install
-cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} -DBOOST_ROOT=${HEPSW_BOOST_DIR} ..
+${CMAKE} -DCMAKE_INSTALL_PREFIX=${InstallDir} -DBOOST_ROOT=${HEPSW_BOOST_DIR} ..
 make -j${NUM_CORES}
 ctest -j ${NUM_CORES}
 make install

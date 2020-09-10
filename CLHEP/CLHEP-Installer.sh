@@ -21,7 +21,7 @@ mkdir build
 cd build
 
 ## install
-cmake3 -DCMAKE_INSTALL_PREFIX=${InstallDir} ../CLHEP
+${CMAKE} -DCMAKE_INSTALL_PREFIX=${InstallDir} ../CLHEP
 make -j${NUM_CORES}
 ctest -j ${NUM_CORES}
 make install
