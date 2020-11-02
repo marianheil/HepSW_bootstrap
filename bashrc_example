@@ -2,6 +2,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+## IPPP specific setup
 # GCC 8
 source /opt/rh/devtoolset-8/enable
 
@@ -11,19 +12,25 @@ module load mpi/openmpi-x86_64
 # other libraries e.g. GLIBCXX_3.4.20
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib64:/usr/lib64
 
+## Load Hep software
+hepsw_folder=/mt/hepsw/el7/x86_64/gcc8
+
 # FastJet (No Dependencies)
-source /mt/hepsw/el7/x86_64/FastJet-3.3.2/FastJetenv.sh
+source ${hepsw_folder}/FastJet-3.3.4/FastJetenv.sh
+# source ${hepsw_folder}/FastJet-3.3.4/FastJetdependencies.sh # empty file
 
 # Rivet
-source /mt/hepsw/el7/x86_64/rivet-2.7.0/rivetenv.sh
+source ${hepsw_folder}/rivet-3.1.2/rivetenv.sh
 # Load dependencies explicitly (recommended)
-source /mt/hepsw/el7/x86_64/HepMC2-2.06.09/HepMC2env.sh
+source ${hepsw_folder}/HepMC3-3.2.2/HepMC3env.sh
+source ${hepsw_folder}/YODA-1.8.3/YODAenv.sh
 # FastJet already loaded before
-# source /mt/hepsw/el7/x86_64/FastJet-3.3.2/FastJetenv.sh
+# source ${hepsw_folder}/FastJet-3.3.4/FastJetenv.sh
 
 # Sherpa
-source /mt/hepsw/el7/x86_64/Sherpa-2.2.8/Sherpaenv.sh
-# Load dependencies implicitly (this will load FastJet a second time)
-source /mt/hepsw/el7/x86_64/Sherpa-2.2.8/Sherpadependencies.sh
+source ${hepsw_folder}/Sherpa-2.2.10/Sherpaenv.sh
+# Load dependencies implicitly
+# this will load FastJet, rivet & HepMC3 a second time (does not do any harm)
+source ${hepsw_folder}/Sherpa-2.2.10/Sherpadependencies.sh
 # Note: Dependencies of dependencies are not loaded automatically
 # e.g. rivetdependencies.sh is not loaded from Sherpadependencies.sh
